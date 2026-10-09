@@ -1,0 +1,40 @@
+[project]
+name = "math-model"
+version = "0.1.0"
+description = "Mathematical modeling project with FastAPI and scientific computing stacks"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    # Web & API
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.28.0",
+    # 数据分析与建模
+    "numpy",
+    "pandas",
+    "scipy",
+    "statsmodels",
+    "sympy",
+    "networkx",
+    "pulp",
+    # 机器学习与深度学习
+    "scikit-learn",
+    "tensorflow",
+    "keras",
+    # 可视化与制表
+    "matplotlib",
+    "seaborn",
+    "statannotations",
+    "tabulate",
+    # 文件处理与网络
+    "openpyxl",
+    "xlrd",
+    "xlwt",
+    "requests",
+    # 交互式开发与工具
+    "ipykernel",
+    "ipython",
+    "rich",
+    "psutil",
+    "httpx2>=2.13.1",
+    "httpx>=0.28.1",
+]

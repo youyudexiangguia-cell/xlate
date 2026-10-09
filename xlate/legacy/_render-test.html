@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<!-- ⬇⬇ 关键：让本页也强制 Trusted Types，才能复现被拦截的现象 ⬇⬇ -->
+<meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script'">
+<title>xlate 回归测试：Trusted Types 环境下能否渲染</title>
+<style>
+  html,body{margin:0;padding:0}
+  body{background:#eef2f7;font:14px/1.7 system-ui,"Microsoft YaHei",sans-serif;padding:18px 18px 320px;color:#0f172a}
+  h1{font-size:17px;margin:0 0 8px}
+  .lead{color:#475569;margin:0 0 16px;max-width:960px}
+  code{background:#e2e8f0;padding:1px 5px;border-radius:3px;font-size:12px;font-family:Consolas,monospace}
+  .box{background:#fff;border:1px solid #cbd5e1;border-radius:8px;padding:12px 14px;margin:0 0 14px;max-width:960px}
+  .ok{color:#166534;font-weight:600}
+  .bad{color:#991b1b;font-weight:600}
+  .dim{color:#64748b}
+  #diag{position:fixed;left:0;right:0;bottom:0;max-height:290px;overflow:auto;background:#0b1020;color:#7CFC9A;
+        font:12px/1.55 Consolas,monospace;padding:10px 14px;white-space:pre-wrap;z-index:2147483600}
+  .colhead{position:fixed;top:150px;font:600 13px system-ui;color:#0f172a;background:#fde68a;padding:3px 10px;border-radius:4px;z-index:2147483000}
+</style>
+</head>
+<body>
+<h1>xlate 回归测试 —— 在「强制 Trusted Types」的页面里渲染</h1>
+<p class="lead">
+  本页 <code>&lt;meta&gt;</code> 里带了 <code>require-trusted-types-for 'script'</code>，
+  <b>和你出问题的那个站点同一策略</b>。下面依次验证：<b>①</b> 策略是否生效；
+  <b>②</b> 旧写法（<code>innerHTML=''</code>）确实被拦；<b>③</b> v0.1.3 的零 innerHTML 写法能否正常渲染。
+</p>
+
+<div class="box" id="ttbox">检测中…</div>
+<div class="box" id="oldbox">测试中…</div>
+<div class="box" id="newbox">测试中…</div>
+
+<div class="colhead">v0.1.3 的渲染结果（应该能看到 3 条蓝色译法）</div>
+<div id="diag">跑测试中…</div>
+
+<script>
+'use strict';
+/* =========================================================
+ * 本页自身也遵守 Trusted Types：全程零 innerHTML
+ * ========================================================= */
+const out = [];
+const say = (s) => { out.push(s); document.getElementById('diag').textContent = out.join('\n'); };
+
+function clearNode(el) {
+  if (!el) return;
+  if (typeof el.replaceChildren === 'function') { el.replaceChildren(); return; }
+  while (el.firstChild) el.removeChild(el.firstChild);
+}
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = String(text);
+  return e;
+}
+function br() { return document.createElement('br'); }
+function code(t) { return el('code', null, t); }
+function setBox(id, ...nodes) {
+  const b = document.getElementById(id);
+  clearNode(b);
+  for (const n of nodes) b.appendChild(typeof n === 'string' ? document.createTextNode(n) : n);
+  return b;
+}
+
+/* ---------- ① 检测 TT 是否真被强制 ---------- */
+let ttEnforced = false;
+try {
+  const probe = document.createElement('div');
+  probe.innerHTML = '';                   // 探测语句：故意触发，看是否被拦
+  setBox('ttbox', el('span', 'bad', '⚠ 本页 Trusted Types 未被强制'),
+    ' —— 那本页复现不了问题，请把这条告诉我。');
+  ttEnforced = false;
+} catch (e) {
+  setBox('ttbox', el('span', 'ok', '✅ 本页已强制 Trusted Types'),
+    ' —— 正是复现问题所需的环境。');
+  ttEnforced = true;
+}
+say('[环境] Trusted Types 强制 = ' + ttEnforced);
+
+/* ---------- ② 旧写法：证明它必被拦 ---------- */
+try {
+  const d = document.createElement('div');
+  d.innerHTML = '';                       // ← v0.1.0 里 renderSenses 的第一行
+  setBox('oldbox', el('span', 'bad', '旧写法没有抛异常'), '（说明本页 TT 未生效）');
+  say('[旧写法 innerHTML=""] 未抛异常 —— 环境不对');
+} catch (e) {
+  setBox('oldbox',
+    el('span', 'bad', '❌ 旧写法确实被拦（这就是你之前「只剩标题、正文空白」的原因）'),
+    br(), code(String(e.message)));
+  say('[旧写法 innerHTML=""] 抛异常 ✓ ' + e.message);
+}
+
+/* ---------- ③ 新写法：零 innerHTML ---------- */
+const CSS = `
+  :host {
+    position: fixed; top: 0; left: 0; width: 0; height: 0;
+    z-index: 2147483647;
+    font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+    font-size: 13px; font-weight: 400; font-style: normal;
+    line-height: normal; letter-spacing: normal; word-spacing: normal;
+    color: #111827; text-align: left; text-transform: none; text-indent: 0;
+    direction: ltr; white-space: normal; visibility: visible; opacity: 1;
+    border: 0; margin: 0; padding: 0; background: transparent; float: none;
+  }
+  * {
+    box-sizing: border-box; margin: 0; padding: 0;
+    font-family: inherit; font-size: inherit; font-weight: inherit; font-style: inherit;
+    line-height: normal; letter-spacing: normal; word-spacing: normal; text-indent: 0;
+    color: inherit; text-align: left; text-transform: none; text-decoration: none;
+    white-space: normal; list-style: none; float: none; vertical-align: baseline;
+    border: 0; background: transparent; max-width: none; min-width: 0;
+  }
+  .panel {
+    position: fixed; width: 320px; max-height: 60vh; overflow: auto;
+    background: #ffffff; color: #111827; border: 1px solid #d1d5db;
+    border-radius: 8px; box-shadow: 0 8px 28px rgba(0,0,0,.22); font-size: 13px;
+  }
+  .hd { display:flex; align-items:center; gap:6px; padding:8px 10px; border-bottom:1px solid #e5e7eb; background:#ffffff; }
+  .term { font-weight:600; font-size:14px; flex:1; word-break:break-all; }
+  .tag { font-size:11px; padding:1px 6px; border-radius:10px; white-space:nowrap; }
+  .tag.local { background:#dcfce7; color:#166534; }
+  .close { cursor:pointer; color:#9ca3af; font-size:16px; padding:0 2px; }
+  .body { padding: 4px 0; }
+  .sense { padding: 7px 10px; border-bottom: 1px solid #f3f4f6; }
+  .sense:last-child { border-bottom: 0; }
+  .row1 { display:flex; align-items:baseline; gap:6px; }
+  .field { font-size:11px; color:#6b7280; white-space:nowrap; }
+  .zh { font-weight:600; color:#1d4ed8; }
+  .note { color:#4b5563; margin-top:2px; line-height:1.5; }
+`;
+
+const SEED = [
+  { field: '工程/配置', zh: '配置文件、配置组', note: 'VS Code / AWS CLI 的 profile 是一套命名配置' },
+  { field: '性能', zh: '性能剖析', note: 'profiler=性能分析器' },
+  { field: '产品', zh: '用户档案', note: '通用译法，技术语境里少见' }
+];
+
+/* 与 v0.1.3 完全相同 */
+function renderSenses(bodyEl, senses) {
+  clearNode(bodyEl);
+  let n = 0;
+  for (const s of senses) {
+    const d = el('div', 'sense');
+    const r1 = el('div', 'row1');
+    if (s.field) r1.appendChild(el('span', 'field', s.field));
+    r1.appendChild(el('span', 'zh', s.zh));
+    d.appendChild(r1);
+    if (s.note) d.appendChild(el('div', 'note', s.note));
+    bodyEl.appendChild(d);
+    n++;
+  }
+  return n;
+}
+
+const host = document.createElement('div');
+document.body.appendChild(host);
+const shadow = host.attachShadow({ mode: 'open' });
+shadow.appendChild(el('style', null, CSS));
+
+const p = el('div', 'panel');
+const hd = el('div', 'hd');
+hd.appendChild(el('div', 'term', 'profile'));
+const closeBtn = el('span', 'close', '✕');
+hd.appendChild(closeBtn);
+const tag = el('span', 'tag local', '本地词库');
+hd.insertBefore(tag, closeBtn);
+p.appendChild(hd);
+const bodyEl = el('div', 'body');
+p.appendChild(bodyEl);
+p.style.top = '200px';
+p.style.left = '40px';
+shadow.appendChild(p);
+
+let n = 0, err = null;
+try { n = renderSenses(bodyEl, SEED); } catch (e) { err = e; }
+
+if (err) {
+  setBox('newbox', el('span', 'bad', '❌ v0.1.3 也失败了'), br(), code(String(err.message)));
+  say('[v0.1.3 渲染] 失败: ' + err.message);
+} else {
+  setBox('newbox',
+    el('span', 'ok', '✅ v0.1.3 渲染成功'),
+    ` —— 义项数 ${n}，正文子节点 ${bodyEl.children.length}。`,
+    br(),
+    el('span', 'dim', '请看页面顶部黄色标签下方的面板：应该能看到 3 条蓝色中文译法。'));
+  say('[v0.1.3 渲染] 成功，义项数 = ' + n + '，body 子节点 = ' + bodyEl.children.length);
+}
+
+/* ---------- 诊断 ---------- */
+setTimeout(() => {
+  const zhEl = bodyEl.querySelector('.zh');
+  const cs = zhEl ? getComputedStyle(zhEl) : null;
+  const r = p.getBoundingClientRect();
+  say('');
+  say('--- 面板实测 ---');
+  say('  .sense 数量   ' + bodyEl.querySelectorAll('.sense').length);
+  say('  面板尺寸      ' + Math.round(r.width) + ' x ' + Math.round(r.height));
+  say('  .zh 文本      ' + JSON.stringify(zhEl ? zhEl.textContent : null));
+  say('  .zh computed  color=' + (cs ? cs.color : '-') + ' fontSize=' + (cs ? cs.fontSize : '-'));
+  say('  .zh offsetH   ' + (zhEl ? zhEl.offsetHeight : '-'));
+}, 250);
+</script>
+</body>
+</html>

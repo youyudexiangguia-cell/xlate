@@ -1,0 +1,5540 @@
+{
+  "meta": {
+    "version": 2,
+    "updated": "2026-10-08",
+    "note": "key 用小写原形（查询会自动转小写）；value 是义项数组，一词多义是常态；field=领域，zh=惯用译法，note=什么时候用哪个；src: curated=人工确认 / api=模型生成待复核",
+    "counts": {
+      "terms": 483,
+      "senses": 504,
+      "polysemous": 13
+    }
+  },
+  "terms": {
+    "abi": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "应用二进制接口",
+        "note": "二进制层面的兼容约定。和 API 的区别：ABI 管机器，API 管源码",
+        "src": "curated"
+      }
+    ],
+    "above the fold": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "首屏（区域内）",
+        "note": "不用滚动就能看到的部分。借自报纸「折线以上」",
+        "src": "curated"
+      }
+    ],
+    "abstraction layer": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "抽象层",
+        "note": "遮蔽底层复杂度的中间层",
+        "src": "curated"
+      }
+    ],
+    "accessibility": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "无障碍",
+        "note": "常缩写 a11y。让残障用户也能用",
+        "src": "curated"
+      }
+    ],
+    "acid": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "原子性/一致性/隔离性/持久性",
+        "note": "通常不翻译，直接用 ACID 四个字母",
+        "src": "curated"
+      }
+    ],
+    "acl": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "访问控制列表",
+        "note": "逐条列出谁能访问什么。网络里的 ACL 也指防火墙规则表",
+        "src": "curated"
+      }
+    ],
+    "ad hoc": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "临时的、一次性的、专门为之的",
+        "note": "ad hoc query = 临时查询。不是「特别地」那种褒义",
+        "src": "curated"
+      }
+    ],
+    "adapter": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "适配器",
+        "note": "把不兼容的接口转成能用的。不是「电源适配器」那种直译感",
+        "src": "curated"
+      }
+    ],
+    "affinity": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "亲和性",
+        "note": "CPU/缓存亲和：让任务尽量待在同一个核上",
+        "src": "curated"
+      }
+    ],
+    "agnostic": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "无关的、不依赖特定实现的",
+        "note": "framework-agnostic = 不绑定某个框架。不是「不可知论」",
+        "src": "curated"
+      }
+    ],
+    "annotation": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "注解",
+        "note": "Java 里是元数据（@Override）；Python 里是类型标注。中文有时都译「注解」",
+        "src": "curated"
+      }
+    ],
+    "arity": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "元数",
+        "note": "函数接收的参数个数。binary 是二元、variadic 是变参",
+        "src": "curated"
+      }
+    ],
+    "artifact": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "产物",
+        "note": "构建/CI 输出的文件（jar、镜像、安装包）。不是「文物」",
+        "src": "curated"
+      }
+    ],
+    "assertion": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "断言",
+        "note": "声明「这里必须成立」。不是「主张」",
+        "src": "curated"
+      }
+    ],
+    "asymmetric": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "非对称的",
+        "note": "公钥/私钥一对。symmetric 则指双方同一把密钥",
+        "src": "curated"
+      }
+    ],
+    "at least once": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "至少一次",
+        "note": "可能重复但不会丢。配合幂等才能实用",
+        "src": "curated"
+      }
+    ],
+    "at most once": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "至多一次",
+        "note": "可能丢但不会重复",
+        "src": "curated"
+      }
+    ],
+    "atomic": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "原子（的）",
+        "note": "不可分割、要么全做要么全不做。不是化学的「原子」",
+        "src": "curated"
+      }
+    ],
+    "attack surface": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "攻击面",
+        "note": "所有可能被攻击的入口总和",
+        "src": "curated"
+      }
+    ],
+    "autoscaling": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "自动扩缩容",
+        "note": "按负载自动增减实例",
+        "src": "curated"
+      }
+    ],
+    "backfill": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "回填",
+        "note": "给历史数据补上新字段/新计算。不是「倒填」",
+        "src": "curated"
+      }
+    ],
+    "backoff": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "退避",
+        "note": "失败后等一段时间再重试。exponential backoff = 指数退避",
+        "src": "curated"
+      }
+    ],
+    "backpressure": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "流",
+        "zh": "背压",
+        "note": "下游处理不过来时向上游施加的反向压力。不是「背上的压力」",
+        "src": "curated"
+      }
+    ],
+    "barrel file": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "桶文件",
+        "note": "一个 index.ts 把同目录模块全部 re-export",
+        "src": "curated"
+      }
+    ],
+    "barrier": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "屏障、栅栏",
+        "note": "所有线程到齐才能继续。不是「障碍」（那是 obstacle）",
+        "src": "curated"
+      }
+    ],
+    "bdd": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "行为驱动开发",
+        "note": "用自然语言描述行为（Given/When/Then）",
+        "src": "curated"
+      }
+    ],
+    "bearer token": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "持有者令牌",
+        "note": "谁拿着谁就能用，像现金。HTTP 头写作 Authorization: Bearer xxx",
+        "src": "curated"
+      }
+    ],
+    "best effort": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "尽力而为",
+        "note": "不保证成功，只保证尽力。网络里的 best-effort delivery",
+        "src": "curated"
+      }
+    ],
+    "bikeshed": [
+      {
+        "fields": [
+          "通用",
+          "俚语"
+        ],
+        "aspect": "",
+        "zh": "无关紧要的争论",
+        "note": "bikeshedding = 在琐碎细节上吵翻天，却放过真正难的问题",
+        "src": "curated"
+      }
+    ],
+    "bikeshedding": [
+      {
+        "fields": [
+          "通用",
+          "俚语"
+        ],
+        "aspect": "",
+        "zh": "无关紧要的争论",
+        "note": "在琐碎细节上吵翻天却放过真正难的问题。动词原形是 bikeshed。这是更常用的形态",
+        "src": "curated"
+      }
+    ],
+    "bind": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "绑定",
+        "note": "bind 端口/地址，把一个 socket 挂到某地址上",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "JS",
+        "zh": "绑定",
+        "note": "fn.bind(this)：固定函数的执行上下文",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "事件",
+        "zh": "绑定",
+        "note": "事件绑定，给元素挂监听器",
+        "src": "curated"
+      }
+    ],
+    "blameless": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "不追责的",
+        "note": "blameless postmortem = 只找系统性原因、不怪具体人",
+        "src": "curated"
+      }
+    ],
+    "blast radius": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "爆炸半径",
+        "note": "一处故障最多能影响多大范围",
+        "src": "curated"
+      }
+    ],
+    "blue green": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "蓝绿（部署）",
+        "note": "两套环境，切流量过去，出问题秒切回来",
+        "src": "curated"
+      }
+    ],
+    "boilerplate": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "样板代码",
+        "note": "每个项目都得写、没什么信息量的那部分",
+        "src": "curated"
+      }
+    ],
+    "breakpoint": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "断点",
+        "note": "响应式里触发样式切换的屏幕宽度。另有调试器的「断点」，同词不同义",
+        "src": "curated"
+      }
+    ],
+    "brittle": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "脆弱的、易碎的",
+        "note": "brittle test = 一改就挂的测试",
+        "src": "curated"
+      }
+    ],
+    "broker": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "消息代理",
+        "note": "消息中间人。不是金融的「经纪人」",
+        "src": "curated"
+      }
+    ],
+    "brownfield": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "棕地（既有系统上改造）",
+        "note": "在现有系统里动刀，和 greenfield（从零起）相对",
+        "src": "curated"
+      }
+    ],
+    "buffer": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "缓冲区",
+        "note": "临时存放数据的内存块；Node 里也是 Buffer 类型",
+        "src": "curated"
+      }
+    ],
+    "builder": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "建造者",
+        "note": "一步步拼出复杂对象。也指 CI 的「构建机器」",
+        "src": "curated"
+      }
+    ],
+    "bundle": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "打包、（打包）产物",
+        "note": "把所有模块合成一个文件。名词也常用：the bundle is 2MB",
+        "src": "curated"
+      }
+    ],
+    "bus factor": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "巴士系数",
+        "note": "「几个人被巴士撞了项目就完蛋」——衡量知识集中风险",
+        "src": "curated"
+      }
+    ],
+    "busy wait": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "忙等",
+        "note": "循环空转等条件成立，费 CPU。反义是阻塞等待",
+        "src": "curated"
+      }
+    ],
+    "ca": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "证书颁发机构",
+        "note": "Certificate Authority。信任链的根",
+        "src": "curated"
+      }
+    ],
+    "cache busting": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "缓存失效（处理）",
+        "note": "给文件名加 hash 强制浏览器拉新版",
+        "src": "curated"
+      }
+    ],
+    "canary": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "金丝雀（发布）",
+        "note": "先放极少比例流量试水，没问题再全量",
+        "src": "curated"
+      }
+    ],
+    "canonical": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "规范的、标准的",
+        "note": "指「唯一的标准形式」：canonical path 规范路径、canonical URL 规范链接。不是「教规的」",
+        "src": "curated"
+      }
+    ],
+    "cap": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "CAP 定理",
+        "note": "一致性/可用性/分区容忍三选二。通常不翻译",
+        "src": "curated"
+      }
+    ],
+    "cardinality": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "基数",
+        "note": "一列里不同值的个数。low cardinality（如性别）不适合建索引",
+        "src": "curated"
+      }
+    ],
+    "caret range": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "插入符范围",
+        "note": "^1.2.3 = 允许升 minor/patch，不升 major",
+        "src": "curated"
+      }
+    ],
+    "cdn": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "内容分发网络",
+        "note": "把静态资源铺到离用户近的节点",
+        "src": "curated"
+      }
+    ],
+    "certificate": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "证书",
+        "note": "TLS 证书。不是「证明文件」那种泛义",
+        "src": "curated"
+      }
+    ],
+    "cgroup": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "容器",
+        "zh": "控制组",
+        "note": "限制/计量一组进程的资源。通常直接用 cgroup",
+        "src": "curated"
+      }
+    ],
+    "changelog": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "变更日志",
+        "note": "面向使用者的版本改动记录",
+        "src": "curated"
+      }
+    ],
+    "checkpoint": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "检查点",
+        "note": "把内存状态刷到磁盘的时点。不是「检查站」",
+        "src": "curated"
+      }
+    ],
+    "choreography": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "协同、（去中心）协作",
+        "note": "没有指挥，各方靠事件自己配合",
+        "src": "curated"
+      }
+    ],
+    "circuit breaker": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "熔断器",
+        "note": "下游连续失败就快速拒绝，避免拖垮自己。不是电路里的「断路器」直译",
+        "src": "curated"
+      }
+    ],
+    "circular reference": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "循环引用",
+        "note": "A 引用 B、B 引用 A。不是「圆形的引用」",
+        "src": "curated"
+      }
+    ],
+    "closure": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "闭包",
+        "note": "函数带上它捕获的外部变量。不是「关闭」",
+        "src": "curated"
+      }
+    ],
+    "code splitting": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "代码分割",
+        "note": "把打包产物拆成多块按需加载",
+        "src": "curated"
+      }
+    ],
+    "coerce": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "强制转换",
+        "note": "类型强制转换。JS 里常指隐式类型转换",
+        "src": "curated"
+      }
+    ],
+    "cohesion": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "内聚",
+        "note": "模块内部元素的相关程度。高内聚是好事。和 coupling 成对",
+        "src": "curated"
+      }
+    ],
+    "combinator": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "组合子",
+        "note": "把小的东西组合成大东西的抽象。不是「组合器」这种字面译",
+        "src": "curated"
+      }
+    ],
+    "commonjs": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "CommonJS",
+        "note": "Node 传统模块系统（require/module.exports）。通常不译",
+        "src": "curated"
+      }
+    ],
+    "compaction": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "合并压缩",
+        "note": "把多个小文件合成大文件、顺便清掉已删除数据",
+        "src": "curated"
+      }
+    ],
+    "compile": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "编译",
+        "note": "源码 → 目标代码。和 build 的区别：build 通常包含编译+链接+打包",
+        "src": "curated"
+      }
+    ],
+    "config drift": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "配置漂移",
+        "note": "手改导致环境和声明的不一致",
+        "src": "curated"
+      }
+    ],
+    "connection pool": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "连接池",
+        "note": "预先建好一批连接循环复用，避免每次重连",
+        "src": "curated"
+      }
+    ],
+    "consumer": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "消费者",
+        "note": "从队列里读消息的一方。不是「顾客」那种泛义",
+        "src": "curated"
+      }
+    ],
+    "contention": [
+      {
+        "fields": [
+          "性能"
+        ],
+        "aspect": "",
+        "zh": "争用",
+        "note": "多个请求抢同一份资源。不是「争论」",
+        "src": "curated"
+      }
+    ],
+    "context switch": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "上下文切换",
+        "note": "CPU 从跑一个任务换成跑另一个，有开销",
+        "src": "curated"
+      }
+    ],
+    "continuation": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "续延",
+        "note": "「剩下要做什么」的抽象。async/await 本质就是它",
+        "src": "curated"
+      }
+    ],
+    "contravariance": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "逆变",
+        "note": "子类型关系反转。函数参数位置天然逆变",
+        "src": "curated"
+      }
+    ],
+    "control plane": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "控制平面",
+        "note": "负责决策/下发的部分；data plane 是真正搬数据的部分",
+        "src": "curated"
+      }
+    ],
+    "controlled component": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "受控组件",
+        "note": "值由框架状态决定；uncontrolled 则由 DOM 自己管",
+        "src": "curated"
+      }
+    ],
+    "convention over configuration": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "约定优于配置",
+        "note": "常缩写 CoC，按约定走就不用写配置",
+        "src": "curated"
+      }
+    ],
+    "cookie": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "Web",
+        "zh": "Cookie",
+        "note": "通常不译。SameSite / HttpOnly / Secure 是它的三个安全属性",
+        "src": "curated"
+      }
+    ],
+    "corner case": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "极端情况",
+        "note": "多个边界条件同时叠加。口语里常和 edge case 混用",
+        "src": "curated"
+      }
+    ],
+    "coroutine": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "协程",
+        "note": "可暂停/恢复的函数，比线程轻",
+        "src": "curated"
+      }
+    ],
+    "cors": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "Web",
+        "zh": "跨源资源共享",
+        "note": "浏览器的一套跨域放行机制。报错时说的是「缺 CORS 头」，不是「跨域被墙」",
+        "src": "curated"
+      }
+    ],
+    "coupling": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "耦合",
+        "note": "模块间依赖程度。低耦合是好事",
+        "src": "curated"
+      }
+    ],
+    "covariance": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "协变",
+        "note": "子类型关系在容器上保持同向。和 contravariance（逆变）成对出现",
+        "src": "curated"
+      }
+    ],
+    "coverage": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "覆盖率",
+        "note": "被测试执行到的代码比例。branch coverage = 分支覆盖率",
+        "src": "curated"
+      }
+    ],
+    "covering index": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "覆盖索引",
+        "note": "查询要的字段全在索引里，不用回表",
+        "src": "curated"
+      }
+    ],
+    "csp": [
+      {
+        "fields": [
+          "前端",
+          "安全"
+        ],
+        "aspect": "Web",
+        "zh": "内容安全策略",
+        "note": "用响应头限制页面能加载/执行什么。Trusted Types 就是它的一条指令",
+        "src": "curated"
+      }
+    ],
+    "csrf": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "跨站请求伪造",
+        "note": "借你已登录的 cookie 冒充你发请求。防御靠 token/SameSite",
+        "src": "curated"
+      }
+    ],
+    "currying": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "柯里化",
+        "note": "把多参数函数拆成一串单参数函数。音译，别写成「咖喱化」……虽然也会见到",
+        "src": "curated"
+      }
+    ],
+    "cursor": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "游标",
+        "note": "遍历结果集的指针。也指 UI 的鼠标指针（同词不同义）",
+        "src": "curated"
+      }
+    ],
+    "cve": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "公共漏洞编号",
+        "note": "Common Vulnerabilities and Exposures，格式 CVE-2024-1234",
+        "src": "curated"
+      }
+    ],
+    "daemon": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "守护进程",
+        "note": "后台常驻的服务进程。不是「恶魔」；Windows 上叫 service",
+        "src": "curated"
+      }
+    ],
+    "dark launch": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "暗发布",
+        "note": "代码上线但功能不对外开启，只跑内部流量",
+        "src": "curated"
+      }
+    ],
+    "data lake": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "数据湖",
+        "note": "先原样存下来再说的存储方式。不是「湖」",
+        "src": "curated"
+      }
+    ],
+    "data warehouse": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "数据仓库",
+        "note": "面向分析的集中存储，和面向事务的业务库相对",
+        "src": "curated"
+      }
+    ],
+    "deadlock": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "死锁",
+        "note": "互相等对方释放资源，谁也走不了。注意不是「卡住」这么泛",
+        "src": "curated"
+      }
+    ],
+    "debounce": [
+      {
+        "fields": [
+          "性能"
+        ],
+        "aspect": "",
+        "zh": "防抖",
+        "note": "停止触发后再等一段时间才执行（如输入停止 300ms 后才搜索）。和 throttle 最容易搞混",
+        "src": "curated"
+      }
+    ],
+    "declarative": [
+      {
+        "fields": [
+          "范式"
+        ],
+        "aspect": "",
+        "zh": "声明式的",
+        "note": "描述「要什么」而不是「怎么做」。反义 imperative",
+        "src": "curated"
+      }
+    ],
+    "decorator": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "装饰器",
+        "note": "不改原函数就给它加行为。注意另有「装饰器模式」（设计模式）",
+        "src": "curated"
+      }
+    ],
+    "dedupe": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "去重",
+        "note": "同一个包的多个版本合并成一个",
+        "src": "curated"
+      }
+    ],
+    "degrade": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "降级",
+        "note": "牺牲部分功能保住主体可用",
+        "src": "curated"
+      }
+    ],
+    "delegation": [
+      {
+        "fields": [
+          "语言",
+          "架构"
+        ],
+        "aspect": "设计",
+        "zh": "委托",
+        "note": "把活转交给别人干。事件委托、原型委托都是它",
+        "src": "curated"
+      }
+    ],
+    "denormalize": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "反规范化",
+        "note": "故意冗余换查询速度",
+        "src": "curated"
+      }
+    ],
+    "deprecate": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "弃用",
+        "note": "不是「反对/谴责」。标记为将来会删，但现在仍能用",
+        "src": "curated"
+      }
+    ],
+    "deprecated": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "已弃用的",
+        "note": "注意词形：deprecate 是动词「标记为弃用」",
+        "src": "curated"
+      }
+    ],
+    "destructuring": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "解构",
+        "note": "const {a, b} = obj。不是「破坏结构」",
+        "src": "curated"
+      }
+    ],
+    "deterministic": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "确定性的",
+        "note": "同样输入必得同样输出。反义 non-deterministic",
+        "src": "curated"
+      }
+    ],
+    "devdependency": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "开发依赖",
+        "note": "只在开发/构建时需要，不进生产包",
+        "src": "curated"
+      }
+    ],
+    "digest": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "摘要",
+        "note": "哈希后的定长结果。不是「消化」也不是「文摘」",
+        "src": "curated"
+      }
+    ],
+    "dirty": [
+      {
+        "fields": [
+          "系统",
+          "数据"
+        ],
+        "aspect": "状态",
+        "zh": "脏",
+        "note": "dirty data=已改但未同步的数据；dirty flag=变更标记。不是贬义",
+        "src": "curated"
+      }
+    ],
+    "dirty read": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "脏读",
+        "note": "读到了别人还没提交的数据",
+        "src": "curated"
+      }
+    ],
+    "discriminated union": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "可辨识联合",
+        "note": "靠一个共同字段来区分各分支，TS 里最常用的建模手法",
+        "src": "curated"
+      }
+    ],
+    "dist tag": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "分发标签",
+        "note": "npm 里 latest / next / beta 这类指向某版本的别名",
+        "src": "curated"
+      }
+    ],
+    "dogfooding": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "吃自己的狗粮",
+        "note": "自己先用自己的产品",
+        "src": "curated"
+      }
+    ],
+    "downstream": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "下游",
+        "note": "依赖你的那一方。注意：网络和数据流里方向可能相反，看语境",
+        "src": "curated"
+      }
+    ],
+    "drain": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "驱逐、腾空",
+        "note": "drain a node = 把上面的负载迁走再下线。和流处理的 drain（排空）同词不同义",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "流",
+        "zh": "排空",
+        "note": "把队列或流里的数据消费干净",
+        "src": "curated"
+      }
+    ],
+    "dry": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "不要重复自己",
+        "note": "Don't Repeat Yourself。注意被滥用的重灾区",
+        "src": "curated"
+      }
+    ],
+    "duck typing": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "鸭子类型",
+        "note": "「走起来像鸭子、叫起来像鸭子，那就是鸭子」——只看行为不看声明",
+        "src": "curated"
+      }
+    ],
+    "eager evaluation": [
+      {
+        "fields": [
+          "范式"
+        ],
+        "aspect": "",
+        "zh": "及早求值",
+        "note": "立刻就算。和 lazy 相对",
+        "src": "curated"
+      }
+    ],
+    "edge": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "边缘（节点）",
+        "note": "离用户最近的那一层。edge computing = 边缘计算",
+        "src": "curated"
+      }
+    ],
+    "edge case": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "边界情况",
+        "note": "极端但仍在范围内的输入。注意和 corner case 的区别",
+        "src": "curated"
+      }
+    ],
+    "egress": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "出站流量",
+        "note": "从你的网络往外发。云上 egress 通常要额外收费",
+        "src": "curated"
+      }
+    ],
+    "endpoint": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "Web",
+        "zh": "端点、接口地址",
+        "note": "一个可访问的 API 地址。不是「终点」",
+        "src": "curated"
+      }
+    ],
+    "entropy": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "熵",
+        "note": "随机性的度量。low entropy = 容易被猜到",
+        "src": "curated"
+      }
+    ],
+    "entry point": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "入口点",
+        "note": "程序或模块开始执行的位置。列宾的 entry 就是它的简称",
+        "src": "curated"
+      }
+    ],
+    "ephemeral": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "云",
+        "zh": "临时的、短暂的",
+        "note": "ephemeral storage = 实例销毁就没了。不是「短暂的病」",
+        "src": "curated"
+      }
+    ],
+    "error budget": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "错误预算",
+        "note": "100% 减去 SLO 剩下的可失败额度；用完就冻结发布",
+        "src": "curated"
+      }
+    ],
+    "escape": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "逃逸、转义",
+        "note": "sandbox escape = 逃出沙箱；HTML escape = 转义特殊字符。两个意思看语境",
+        "src": "curated"
+      }
+    ],
+    "escape hatch": [
+      {
+        "fields": [
+          "通用",
+          "俚语"
+        ],
+        "aspect": "",
+        "zh": "逃生舱、兜底后门",
+        "note": "抽象层出问题时绕开它的那条路",
+        "src": "curated"
+      }
+    ],
+    "esm": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "ES 模块",
+        "note": "ECMAScript Modules，标准模块系统。不是「企业服务管理」",
+        "src": "curated"
+      }
+    ],
+    "etag": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "Web",
+        "zh": "实体标签",
+        "note": "资源的版本指纹，用于条件请求。中文圈基本不译",
+        "src": "curated"
+      }
+    ],
+    "etl": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "抽取-转换-加载",
+        "note": "Extract/Transform/Load。ELT 是换个顺序，含义不同",
+        "src": "curated"
+      }
+    ],
+    "eventual": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "最终的",
+        "note": "eventually consistent = 最终一致。不是「可能的」",
+        "src": "curated"
+      }
+    ],
+    "eviction": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "驱逐",
+        "note": "资源紧张时被赶走；也指缓存淘汰策略",
+        "src": "curated"
+      }
+    ],
+    "exactly once": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "恰好一次",
+        "note": "理想语义。实际多是 at-least-once + 幂等去重凑出来的",
+        "src": "curated"
+      }
+    ],
+    "facade": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "外观（模式）",
+        "note": "用一个简单接口包住一堆复杂子系统。不是「门面」那种贬义",
+        "src": "curated"
+      }
+    ],
+    "factory": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "工厂",
+        "note": "专门负责创建对象的组件。不是「工厂」那种实体义",
+        "src": "curated"
+      }
+    ],
+    "fail fast": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "快速失败",
+        "note": "一发现错误立刻报错退出，不要带着坏状态往下跑",
+        "src": "curated"
+      }
+    ],
+    "fail safe": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "失效安全",
+        "note": "出故障时进入安全状态（如门禁断电自动开）",
+        "src": "curated"
+      }
+    ],
+    "fake": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "假实现",
+        "note": "有真实逻辑但走捷径的替身，如内存版数据库",
+        "src": "curated"
+      }
+    ],
+    "fallback": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "兜底、降级方案",
+        "note": "主路径失败时走的备选。不是「向后跌倒」",
+        "src": "curated"
+      }
+    ],
+    "fan out": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "扇出",
+        "note": "一条消息分发给多方。fan-in 则是多方汇成一路",
+        "src": "curated"
+      }
+    ],
+    "feature flag": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "功能开关",
+        "note": "常简称 flag，用配置控制代码走不走新逻辑",
+        "src": "curated"
+      }
+    ],
+    "feature parity": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "功能对等",
+        "note": "两个实现/两个平台功能齐平",
+        "src": "curated"
+      }
+    ],
+    "file descriptor": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "文件描述符",
+        "note": "常缩写 fd。Linux 里一切皆 fd，socket 也是",
+        "src": "curated"
+      }
+    ],
+    "first class": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "一等（公民）",
+        "note": "first-class function = 函数能像值一样传递",
+        "src": "curated"
+      }
+    ],
+    "fixture": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "测试夹具、固定数据",
+        "note": "测试用的固定输入数据。不是「夹具零件」",
+        "src": "curated"
+      }
+    ],
+    "flaky": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "不稳定的、偶发失败的",
+        "note": "flaky test = 时过时不过的测试。这是测试里的头号公敌",
+        "src": "curated"
+      }
+    ],
+    "flush": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "刷新、刷盘",
+        "note": "把缓冲区里的内容真正写出去（flush to disk）",
+        "src": "curated"
+      }
+    ],
+    "focus trap": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "焦点锁定",
+        "note": "弹窗打开后 Tab 只在弹窗内循环，不跑到背后页面",
+        "src": "curated"
+      }
+    ],
+    "follower": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "从节点",
+        "note": "旧称 slave。只读或待命",
+        "src": "curated"
+      }
+    ],
+    "footgun": [
+      {
+        "fields": [
+          "通用",
+          "俚语"
+        ],
+        "aspect": "",
+        "zh": "容易伤到自己的设计",
+        "note": "指某个 API/特性很容易被误用而出事。中文技术圈常说「坑」",
+        "src": "curated"
+      }
+    ],
+    "fork": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "派生、分叉",
+        "note": "系统调用：复制当前进程。Git 里 fork 是「复制一份仓库到你自己账号下」",
+        "src": "curated"
+      }
+    ],
+    "forward proxy": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "正向代理",
+        "note": "替客户端出去访问，服务端看到的是代理。俗称「翻墙代理」就是它",
+        "src": "curated"
+      }
+    ],
+    "fragile": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "脆弱的",
+        "note": "和 brittle 近义；fragile 更强调「本来就不结实」",
+        "src": "curated"
+      }
+    ],
+    "fragment": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "Web",
+        "zh": "片段",
+        "note": "URL 里 # 后面的部分，不会发给服务器。也指前端 Fragment 组件",
+        "src": "curated"
+      }
+    ],
+    "fuzz": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "模糊测试",
+        "note": "灌随机/畸形输入找崩溃。不是「绒毛」",
+        "src": "curated"
+      }
+    ],
+    "garbage collection": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "垃圾回收",
+        "note": "自动回收不用的内存。缩写 GC",
+        "src": "curated"
+      }
+    ],
+    "gate": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "关卡、门禁",
+        "note": "必须通过才能进入下一阶段的检查",
+        "src": "curated"
+      }
+    ],
+    "gateway": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "网关",
+        "note": "统一入口，做路由/鉴权/限流。API gateway = API 网关",
+        "src": "curated"
+      }
+    ],
+    "generator": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "生成器",
+        "note": "能 yield 出多个值的函数。另有「代码生成器」的意思",
+        "src": "curated"
+      }
+    ],
+    "generics": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "泛型",
+        "note": "参数化类型。Java 叫 generics，C++ 叫 templates",
+        "src": "curated"
+      }
+    ],
+    "golden test": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "黄金测试、基准快照测试",
+        "note": "把当前正确输出存成基准文件，之后逐字比对",
+        "src": "curated"
+      }
+    ],
+    "graceful degradation": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "优雅降级",
+        "note": "部分能力失效时仍能提供降级服务",
+        "src": "curated"
+      }
+    ],
+    "graceful shutdown": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "优雅停机",
+        "note": "先停止收新请求、把手头做完再退出。不是「优雅地关机」那种修辞",
+        "src": "curated"
+      }
+    ],
+    "greenfield": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "绿地（全新项目）",
+        "note": "完全从零开始、没有历史包袱",
+        "src": "curated"
+      }
+    ],
+    "guid": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "全局唯一标识符",
+        "note": "微软系说法；别的体系里叫 UUID",
+        "src": "curated"
+      }
+    ],
+    "handle": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "句柄",
+        "note": "名词：系统资源的抽象引用（文件句柄/socket 句柄）",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "处理",
+        "note": "动词义才是「处理」，如 handle the error",
+        "src": "curated"
+      }
+    ],
+    "handshake": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "握手",
+        "note": "建立连接前的协商过程。TLS handshake / TCP 三次握手",
+        "src": "curated"
+      }
+    ],
+    "hang": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "挂起、卡死",
+        "note": "进程/请求长时间没响应。中文技术圈常说「卡住」「挂了」。注意 hang up 是挂断电话",
+        "src": "curated"
+      }
+    ],
+    "happy path": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "正常路径、无异常路径",
+        "note": "一切顺利时走的那条。不是说代码「很开心」",
+        "src": "curated"
+      }
+    ],
+    "hardcode": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "硬编码",
+        "note": "把本该可配置的值写死在代码里",
+        "src": "curated"
+      }
+    ],
+    "harden": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "加固",
+        "note": "harden a server = 关掉不必要的服务和权限",
+        "src": "curated"
+      }
+    ],
+    "harness": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "测试框架、支架",
+        "note": "把被测代码跑起来的那套脚手架。不是「马具」",
+        "src": "curated"
+      }
+    ],
+    "head of line blocking": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "队头阻塞",
+        "note": "前面的请求卡住，后面的全都得等",
+        "src": "curated"
+      }
+    ],
+    "health check": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "健康检查",
+        "note": "探活。liveness（活着吗）/ readiness（能接流量吗）要分开",
+        "src": "curated"
+      }
+    ],
+    "hermetic": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "密封的、自包含的",
+        "note": "hermetic build = 不依赖外部环境、可复现的构建。不是「密封炼金术」",
+        "src": "curated"
+      }
+    ],
+    "higher order function": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "高阶函数",
+        "note": "接收或返回函数的函数",
+        "src": "curated"
+      }
+    ],
+    "hmac": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "带密钥的哈希消息认证码",
+        "note": "实际都直接说 HMAC，用来验证消息未被篡改",
+        "src": "curated"
+      }
+    ],
+    "hoist": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "提升",
+        "note": "把嵌套依赖提到上层 node_modules 或函数内声明提到作用域顶部。两个语境都译「提升」",
+        "src": "curated"
+      }
+    ],
+    "hoisting": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "变量提升",
+        "note": "JS 里声明被提到作用域顶部。和依赖的 hoist 同词不同义",
+        "src": "curated"
+      }
+    ],
+    "hook": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "框架",
+        "zh": "钩子",
+        "note": "在某个时机被回调的扩展点",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "React",
+        "zh": "Hook",
+        "note": "React Hooks 是另一套含义，通常不翻译",
+        "src": "curated"
+      }
+    ],
+    "horizontal scaling": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "横向扩展",
+        "note": "加机器。vertical scaling 是「升配单机」，俗称「堆硬件」",
+        "src": "curated"
+      }
+    ],
+    "hot reload": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "热重载",
+        "note": "改代码后不刷新页面就生效，且尽量保留状态。HMR = 热模块替换",
+        "src": "curated"
+      }
+    ],
+    "hot spot": [
+      {
+        "fields": [
+          "性能"
+        ],
+        "aspect": "",
+        "zh": "热点",
+        "note": "被访问得特别集中的一小块数据/分区。不是「热斑」",
+        "src": "curated"
+      }
+    ],
+    "hsts": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "HTTP 严格传输安全",
+        "note": "强制浏览器以后只能用 HTTPS 访问本站",
+        "src": "curated"
+      }
+    ],
+    "hydrate": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "注水、激活",
+        "note": "服务端渲染好的 HTML 到浏览器后，挂上事件变成可交互。圈内常说「注水」",
+        "src": "curated"
+      }
+    ],
+    "hydration mismatch": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "注水不一致",
+        "note": "服务端渲染结果和客户端首次渲染不一致，React 会报错",
+        "src": "curated"
+      }
+    ],
+    "hygiene": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "卫生性",
+        "note": "宏的 hygiene：宏展开不会意外捕获用户变量。不是「卫生」",
+        "src": "curated"
+      }
+    ],
+    "idempotency key": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "幂等键",
+        "note": "客户端带一个唯一键，服务端据此去重，重复请求只生效一次",
+        "src": "curated"
+      }
+    ],
+    "idempotent": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "HTTP",
+        "zh": "幂等",
+        "note": "执行一次和执行多次结果相同。GET/PUT/DELETE 是幂等的",
+        "src": "curated"
+      }
+    ],
+    "idempotent deploy": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "幂等部署",
+        "note": "重复执行结果一致，所以可以安全重跑",
+        "src": "curated"
+      }
+    ],
+    "idiomatic": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "符合惯用法的、地道的",
+        "note": "idiomatic Go = 符合 Go 社区习惯的写法。不是「成语的」",
+        "src": "curated"
+      }
+    ],
+    "idle": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "空闲、闲置",
+        "note": "idle CPU = 没活干的核。不是「懒惰」",
+        "src": "curated"
+      }
+    ],
+    "immutable": [
+      {
+        "fields": [
+          "范式"
+        ],
+        "aspect": "",
+        "zh": "不可变的",
+        "note": "创建后不能改，改动是产生新对象。反义 mutable",
+        "src": "curated"
+      }
+    ],
+    "immutable infrastructure": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "不可变基础设施",
+        "note": "不原地改，要改就换新的整机",
+        "src": "curated"
+      }
+    ],
+    "imperative": [
+      {
+        "fields": [
+          "范式"
+        ],
+        "aspect": "",
+        "zh": "命令式的",
+        "note": "一步步描述「怎么做」",
+        "src": "curated"
+      }
+    ],
+    "incremental build": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "增量构建",
+        "note": "只重编改动的部分",
+        "src": "curated"
+      }
+    ],
+    "index": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "索引",
+        "note": "加速查询的数据结构。注意数组的 index 是「下标」",
+        "src": "curated"
+      }
+    ],
+    "indirection": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "间接层",
+        "note": "「没有什么是加一层解决不了的」里的那一层",
+        "src": "curated"
+      }
+    ],
+    "ingress": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "入站流量、（K8s）入口",
+        "note": "east-west 是内部东西向，north-south 是进出南北向",
+        "src": "curated"
+      }
+    ],
+    "injection": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "注入",
+        "note": "SQL/命令/模板注入。不是医学的「注射」",
+        "src": "curated"
+      }
+    ],
+    "inline": [
+      {
+        "fields": [
+          "语言",
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "内联",
+        "note": "inline function（内联展开）和 inline element（行内元素）是两个意思",
+        "src": "curated"
+      }
+    ],
+    "interrupt": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "中断",
+        "note": "硬件/软件打断 CPU 当前工作。不是「打断别人说话」",
+        "src": "curated"
+      }
+    ],
+    "introspection": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "内省",
+        "note": "运行时查看对象信息（只读，不改）。和 reflection 的区别在「能不能改」",
+        "src": "curated"
+      }
+    ],
+    "isolation level": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "隔离级别",
+        "note": "读未提交/读已提交/可重复读/串行化四档",
+        "src": "curated"
+      }
+    ],
+    "iterable": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "可迭代的",
+        "note": "能被 for...of 遍历的。和 iterator 是「能被迭代」和「迭代器」的区别",
+        "src": "curated"
+      }
+    ],
+    "iteration": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "迭代、一次循环",
+        "note": "注意和 recursion（递归）是两条完全不同的路。中文里常有人把「迭代」写成「递推」，那是错的",
+        "src": "curated"
+      }
+    ],
+    "iterator": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "迭代器",
+        "note": "能一个个吐出元素的对象",
+        "src": "curated"
+      }
+    ],
+    "iv": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "初始向量",
+        "note": "Initialization Vector，让相同明文每次密文不同",
+        "src": "curated"
+      }
+    ],
+    "jitter": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "抖动、随机扰动",
+        "note": "在退避时间上加随机量，避免所有客户端同时重试",
+        "src": "curated"
+      }
+    ],
+    "join": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "连接",
+        "note": "把多表按条件拼起来。不是「加入团队」那个 join",
+        "src": "curated"
+      }
+    ],
+    "jwt": [
+      {
+        "fields": [
+          "前端",
+          "安全"
+        ],
+        "aspect": "Web",
+        "zh": "JSON 网络令牌",
+        "note": "三段式自包含令牌。实际交流中几乎只说 JWT",
+        "src": "curated"
+      }
+    ],
+    "keep alive": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "长连接、保持连接",
+        "note": "一个 TCP 连接跑多个请求。HTTP/1.1 默认开启",
+        "src": "curated"
+      }
+    ],
+    "kernel": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "内核",
+        "note": "操作系统的核心。不是「果仁」也不是「核心团队」",
+        "src": "curated"
+      }
+    ],
+    "kiss": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "保持简单",
+        "note": "Keep It Simple, Stupid",
+        "src": "curated"
+      }
+    ],
+    "latency": [
+      {
+        "fields": [
+          "性能"
+        ],
+        "aspect": "",
+        "zh": "延迟",
+        "note": "一次请求花多久。p99 latency = 99 分位延迟",
+        "src": "curated"
+      }
+    ],
+    "layout thrashing": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "布局抖动",
+        "note": "读写交替强制同步重排，性能杀手",
+        "src": "curated"
+      }
+    ],
+    "lazy evaluation": [
+      {
+        "fields": [
+          "范式"
+        ],
+        "aspect": "",
+        "zh": "惰性求值",
+        "note": "用到才算。不是「懒惰」",
+        "src": "curated"
+      }
+    ],
+    "lazy load": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "懒加载",
+        "note": "用到时才加载。不是「懒惰」",
+        "src": "curated"
+      }
+    ],
+    "leader": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "主节点、领导者",
+        "note": "旧称 master，现在多用 leader/primary。不是「领导」",
+        "src": "curated"
+      }
+    ],
+    "leaky abstraction": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "抽象泄漏",
+        "note": "抽象层没能完全藏住底层细节，细节漏出来了",
+        "src": "curated"
+      }
+    ],
+    "least privilege": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "最小权限（原则）",
+        "note": "只给完成任务所必需的最小权限",
+        "src": "curated"
+      }
+    ],
+    "legacy": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "遗留的、老旧的",
+        "note": "legacy code = 遗留代码。基本是委婉的贬义",
+        "src": "curated"
+      }
+    ],
+    "leverage": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "利用、借助",
+        "note": "leverage existing code = 利用已有代码。不是金融的「杠杆」",
+        "src": "curated"
+      }
+    ],
+    "lgtm": [
+      {
+        "fields": [
+          "工程",
+          "俚语"
+        ],
+        "aspect": "",
+        "zh": "看着没问题",
+        "note": "Looks Good To Me，代码审查里表示同意合并",
+        "src": "curated"
+      }
+    ],
+    "lifting state": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "状态提升",
+        "note": "把状态挪到最近的共同父组件里共享",
+        "src": "curated"
+      }
+    ],
+    "lineage": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "血缘",
+        "note": "data lineage = 数据从哪来、经过谁、到哪去",
+        "src": "curated"
+      }
+    ],
+    "link": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "链接",
+        "note": "把目标文件合成可执行文件。名词 link 也指「链接/超链接」",
+        "src": "curated"
+      }
+    ],
+    "lint": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "静态检查",
+        "note": "查代码风格与潜在错误。lint 作动词「跑 lint」",
+        "src": "curated"
+      }
+    ],
+    "livelock": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "活锁",
+        "note": "没阻塞、一直在动，但谁也推进不了（互相让路让到死）",
+        "src": "curated"
+      }
+    ],
+    "load balancer": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "负载均衡器",
+        "note": "把流量分给多台后端",
+        "src": "curated"
+      }
+    ],
+    "lockfile": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "锁文件",
+        "note": "package-lock.json / pnpm-lock.yaml，固定整棵依赖树的精确版本",
+        "src": "curated"
+      }
+    ],
+    "long polling": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "长轮询",
+        "note": "请求挂着不立刻返回，有数据才回，然后立刻再发一个",
+        "src": "curated"
+      }
+    ],
+    "magic number": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "魔法数字",
+        "note": "代码里没解释的硬编码常量。贬义，不是好事",
+        "src": "curated"
+      }
+    ],
+    "materialized view": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "物化视图",
+        "note": "把查询结果真的存下来，需要刷新",
+        "src": "curated"
+      }
+    ],
+    "memoization": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "记忆化",
+        "note": "缓存函数结果的手法（名词）；动词是 memoize。别和 memorization（背诵）混",
+        "src": "curated"
+      }
+    ],
+    "memoize": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "记忆化",
+        "note": "把算过的结果缓存起来。注意和 memorize（背下来）拼写差别",
+        "src": "curated"
+      }
+    ],
+    "message queue": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "消息队列",
+        "note": "异步传递消息的中间件。常简称 MQ",
+        "src": "curated"
+      }
+    ],
+    "metaprogramming": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "元编程",
+        "note": "写「能生成/操作代码」的代码",
+        "src": "curated"
+      }
+    ],
+    "middleware": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "框架",
+        "zh": "中间件",
+        "note": "请求处理链上层层包裹的函数，逐个决定是否放行",
+        "src": "curated"
+      }
+    ],
+    "migration": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "迁移",
+        "note": "数据库结构变更脚本。也指「数据搬家」，同一词两个量级",
+        "src": "curated"
+      }
+    ],
+    "minify": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "压缩、最小化",
+        "note": "去空格换短名缩小体积，不改语义。和 compress(gzip) 不同",
+        "src": "curated"
+      }
+    ],
+    "mixin": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "混入",
+        "note": "把一组能力塞进类里，比继承更灵活",
+        "src": "curated"
+      }
+    ],
+    "mmap": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "内存映射",
+        "note": "把文件映射进地址空间当内存读写，省一次拷贝",
+        "src": "curated"
+      }
+    ],
+    "mock": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "模拟对象",
+        "note": "测试替身，可预设返回值、可断言被调用过",
+        "src": "curated"
+      }
+    ],
+    "monad": [
+      {
+        "fields": [
+          "范式"
+        ],
+        "aspect": "",
+        "zh": "单子",
+        "note": "音译「莫纳德」也常见。实际交流基本不译，说 monad",
+        "src": "curated"
+      }
+    ],
+    "monorepo": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "单仓库（多包）",
+        "note": "一个仓库放多个包。中文圈通常直接用 monorepo",
+        "src": "curated"
+      }
+    ],
+    "mount": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "文件系统",
+        "zh": "挂载",
+        "note": "把设备/目录接到目录树的某个点上",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "挂载",
+        "note": "把组件挂到 DOM 上，与 unmount 相对",
+        "src": "curated"
+      }
+    ],
+    "mtls": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "双向 TLS",
+        "note": "客户端和服务端互相验证证书，服务网格里常用",
+        "src": "curated"
+      }
+    ],
+    "multi tenant": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "多租户",
+        "note": "一套系统服务多个客户，数据互相隔离",
+        "src": "curated"
+      }
+    ],
+    "mutate": [
+      {
+        "fields": [
+          "范式"
+        ],
+        "aspect": "",
+        "zh": "变更、原地修改",
+        "note": "mutate the array = 直接改这个数组。注意和「突变」（生物学）无关",
+        "src": "curated"
+      }
+    ],
+    "mutation testing": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "变异测试",
+        "note": "故意往代码里注错，看测试能不能抓到——用来评估测试本身有没有用",
+        "src": "curated"
+      }
+    ],
+    "mutex": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "互斥锁",
+        "note": "同一时刻只允许一个持有者。常简称 lock",
+        "src": "curated"
+      }
+    ],
+    "mvcc": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "多版本并发控制",
+        "note": "读写互不阻塞靠版本快照。通常直接用 MVCC",
+        "src": "curated"
+      }
+    ],
+    "n+1 query": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "N+1 查询",
+        "note": "查列表 1 次、再为每一条各查 1 次，ORM 最常见的性能坑",
+        "src": "curated"
+      }
+    ],
+    "naive": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "朴素的、未经优化的",
+        "note": "naive implementation = 朴素实现。这是中性词，不是骂人「幼稚」",
+        "src": "curated"
+      }
+    ],
+    "namespace": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "容器",
+        "zh": "命名空间",
+        "note": "容器隔离的基础。也指「避免命名冲突的容器」（如 CSS namespace）",
+        "src": "curated"
+      }
+    ],
+    "narrowing": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "收窄",
+        "note": "把宽类型缩小到具体类型",
+        "src": "curated"
+      }
+    ],
+    "nit": [
+      {
+        "fields": [
+          "工程",
+          "俚语"
+        ],
+        "aspect": "",
+        "zh": "小意见",
+        "note": "nit: 表示「这是吹毛求疵的小建议，不改也行」",
+        "src": "curated"
+      }
+    ],
+    "noisy neighbor": [
+      {
+        "fields": [
+          "运维",
+          "系统"
+        ],
+        "aspect": "云",
+        "zh": "吵闹邻居",
+        "note": "同一台机器上别的租户抢走了你的资源",
+        "src": "curated"
+      }
+    ],
+    "nominal": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "标称的、名义上的",
+        "note": "nominal value = 标称值。语言里 nominal typing = 名义类型系统",
+        "src": "curated"
+      }
+    ],
+    "nominal typing": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "名义类型",
+        "note": "必须显式声明同一类型才算兼容（Java/C# 是它）",
+        "src": "curated"
+      }
+    ],
+    "non trivial": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "不简单的、有实质工作量的",
+        "note": "不是「非平凡」这种字面直译；实际意思是「有点东西」",
+        "src": "curated"
+      }
+    ],
+    "nonce": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "随机数、一次性随机值",
+        "note": "number used once：只用一次的随机值，防重放攻击",
+        "src": "curated"
+      }
+    ],
+    "normalize": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "规范化",
+        "note": "拆表消除冗余。注意另外三个同形词：normalize 路径/字符串/向量",
+        "src": "curated"
+      }
+    ],
+    "nullish coalescing": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "空值合并",
+        "note": "?? 只在 null/undefined 时取右边。和 || 的区别：0 和 '' 不会触发",
+        "src": "curated"
+      }
+    ],
+    "oauth": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "OAuth（授权协议）",
+        "note": "授权框架，解决「让第三方访问我的资源但不给密码」。通常不译",
+        "src": "curated"
+      }
+    ],
+    "observer": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "观察者",
+        "note": "订阅-通知模式。不是「观察员」那种人",
+        "src": "curated"
+      }
+    ],
+    "obsolete": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "过时的、废弃的",
+        "note": "比 deprecated 更彻底，通常已不该用",
+        "src": "curated"
+      }
+    ],
+    "on call": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "值班",
+        "note": "随时待命处理线上告警。常作定语 on-call rotation",
+        "src": "curated"
+      }
+    ],
+    "opaque": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "不透明的、不可见的",
+        "note": "opaque type = 内部结构不对外暴露的类型。不是「混浊」",
+        "src": "curated"
+      }
+    ],
+    "optimistic locking": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "乐观锁",
+        "note": "不真加锁，提交时用版本号比对，冲突就重试",
+        "src": "curated"
+      }
+    ],
+    "optimistic ui": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "乐观更新",
+        "note": "先假定成功直接更新界面，失败了再回滚",
+        "src": "curated"
+      }
+    ],
+    "optional chaining": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "可选链",
+        "note": "obj?.a?.b，中途为 null 就短路返回 undefined",
+        "src": "curated"
+      }
+    ],
+    "orchestration": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "编排",
+        "note": "有个中心大脑指挥各方。对比 choreography（各方向自协调）",
+        "src": "curated"
+      }
+    ],
+    "origin": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "源站",
+        "note": "CDN 回源的那个「源」。注意另有同源策略里的 origin（源）",
+        "src": "curated"
+      }
+    ],
+    "orm": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "对象关系映射",
+        "note": "实际都直接说 ORM。把表当对象用",
+        "src": "curated"
+      }
+    ],
+    "orphan": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "版本控制",
+        "zh": "孤儿",
+        "note": "孤儿进程（父进程已死）、孤儿分支（没有后续提交的分支）",
+        "src": "curated"
+      }
+    ],
+    "orthogonal": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "正交的、互不影响的",
+        "note": "orthogonal concerns = 互不干扰的关注点。不是几何的「垂直」",
+        "src": "curated"
+      }
+    ],
+    "out of the box": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "开箱即用",
+        "note": "缩写 OOTB。装完不用配就能用",
+        "src": "curated"
+      }
+    ],
+    "outbox": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "发件箱（模式）",
+        "note": "把要发的消息和业务数据写在同一个事务里，再异步投递",
+        "src": "curated"
+      }
+    ],
+    "outer join": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "外连接",
+        "note": "保留没匹配上的行（补 NULL）。left/right/full 三种",
+        "src": "curated"
+      }
+    ],
+    "overload": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "重载",
+        "note": "同名不同参数。注意和 override（覆盖/重写）完全不是一回事",
+        "src": "curated"
+      }
+    ],
+    "override": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "重写、覆盖",
+        "note": "子类替换父类实现",
+        "src": "curated"
+      }
+    ],
+    "page fault": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "缺页（中断）",
+        "note": "访问的内存页不在物理内存里。不是「页面错误」",
+        "src": "curated"
+      }
+    ],
+    "pagination": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "分页",
+        "note": "offset/limit 是传统做法；keyset 分页用游标，深翻页才不慢",
+        "src": "curated"
+      }
+    ],
+    "paint": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "绘制",
+        "note": "浏览器真的把像素画上去。和 render/reflow 是不同阶段",
+        "src": "curated"
+      }
+    ],
+    "parameterized query": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "参数化查询",
+        "note": "用占位符传值，从根上防 SQL 注入",
+        "src": "curated"
+      }
+    ],
+    "partition": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "分区",
+        "note": "单机内按规则切分。和 sharding 的区别在「跨不跨机器」",
+        "src": "curated"
+      }
+    ],
+    "patch": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "补丁、打补丁",
+        "note": "小改动。也指 pnpm patch 这种「临时改第三方包」",
+        "src": "curated"
+      }
+    ],
+    "payload": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "载荷、有效负载",
+        "note": "请求/响应里真正携带的数据部分。不是「酬载」",
+        "src": "curated"
+      }
+    ],
+    "peer dependency": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "对等依赖",
+        "note": "你要求宿主提供、自己不装的依赖（如插件要求宿主装 React）",
+        "src": "curated"
+      }
+    ],
+    "pessimistic locking": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "悲观锁",
+        "note": "先锁住再说。不是「悲观」的情绪义",
+        "src": "curated"
+      }
+    ],
+    "phantom read": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "幻读",
+        "note": "同一事务里两次范围查询，第二次多出了行。不是「幽灵」",
+        "src": "curated"
+      }
+    ],
+    "pipe": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "管道",
+        "note": "进程间单向数据通道。shell 的 | 就是它",
+        "src": "curated"
+      }
+    ],
+    "pipeline": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "流水线",
+        "note": "CI 里一串按序执行的阶段。不是「管道」（那是 pipe）",
+        "src": "curated"
+      }
+    ],
+    "pod": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "Pod",
+        "note": "K8s 里最小调度单位，通常不译",
+        "src": "curated"
+      }
+    ],
+    "poison": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "毒（消息）",
+        "note": "poison message = 一处理就崩、导致队列卡死的消息",
+        "src": "curated"
+      }
+    ],
+    "polyfill": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "腻子脚本、补丁实现",
+        "note": "用代码补上老环境缺失的特性。注意和 shim 的区别：polyfill 补能力，shim 换接口",
+        "src": "curated"
+      }
+    ],
+    "pool": [
+      {
+        "fields": [
+          "系统",
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "池",
+        "note": "连接池/线程池：预先创建、循环复用的资源集合",
+        "src": "curated"
+      }
+    ],
+    "portal": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "传送门",
+        "note": "把子节点渲染到 DOM 别处（如弹窗挂到 body）",
+        "src": "curated"
+      }
+    ],
+    "postmortem": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "事后复盘",
+        "note": "故障后的原因分析与改进。字面是「验尸」，技术语境完全不是那个意思",
+        "src": "curated"
+      }
+    ],
+    "pre commit": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "提交前（钩子）",
+        "note": "commit 之前自动跑的检查",
+        "src": "curated"
+      }
+    ],
+    "preemption": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "抢占",
+        "note": "被强行剥夺 CPU；preemptive 是「抢占式调度」",
+        "src": "curated"
+      }
+    ],
+    "preflight": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "Web",
+        "zh": "预检（请求）",
+        "note": "浏览器先发 OPTIONS 问服务器允不允许，再发真实请求",
+        "src": "curated"
+      }
+    ],
+    "premature optimization": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "过早优化",
+        "note": "Knuth 那句名言里的词，贬义",
+        "src": "curated"
+      }
+    ],
+    "primitive": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "基本类型、原语",
+        "note": "primitive type = 基本类型（int/boolean）。不是「原始的、落后的」",
+        "src": "curated"
+      }
+    ],
+    "principle of least astonishment": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "最小惊奇原则",
+        "note": "别让使用者意外。常缩写 POLA",
+        "src": "curated"
+      }
+    ],
+    "privilege escalation": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "提权",
+        "note": "从低权限拿到高权限",
+        "src": "curated"
+      }
+    ],
+    "process": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "进程",
+        "note": "操作系统分配资源的单位；和 thread(线程) 相对，进程有独立内存空间",
+        "src": "curated"
+      }
+    ],
+    "producer": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "生产者",
+        "note": "往队列里写消息的一方",
+        "src": "curated"
+      }
+    ],
+    "profile": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "配置",
+        "zh": "配置文件、配置组",
+        "note": "一套命名好的配置，如 VS Code profile、AWS CLI profile",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "性能"
+        ],
+        "aspect": "",
+        "zh": "性能剖析",
+        "note": "profiler=性能分析器；profiling=采样式性能分析",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "产品/账号",
+        "zh": "用户档案、个人资料",
+        "note": "通用译法，技术语境里反而少见",
+        "src": "curated"
+      }
+    ],
+    "property based test": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "基于属性的测试",
+        "note": "不写具体用例，声明「该满足什么性质」，由框架生成大量输入",
+        "src": "curated"
+      }
+    ],
+    "props": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "属性",
+        "note": "父组件传给子组件的数据。也是 properties 的缩写",
+        "src": "curated"
+      }
+    ],
+    "prototype": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "原型",
+        "note": "JS 的继承机制。prototype chain = 原型链",
+        "src": "curated"
+      }
+    ],
+    "provision": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "云",
+        "zh": "供给、置备",
+        "note": "provision a server = 把机器创建并配置好",
+        "src": "curated"
+      }
+    ],
+    "pub/sub": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "发布订阅",
+        "note": "publish/subscribe。发布者不认识订阅者",
+        "src": "curated"
+      }
+    ],
+    "pure function": [
+      {
+        "fields": [
+          "范式"
+        ],
+        "aspect": "",
+        "zh": "纯函数",
+        "note": "同输入同输出、无副作用",
+        "src": "curated"
+      }
+    ],
+    "quarantine": [
+      {
+        "fields": [
+          "测试",
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "隔离",
+        "note": "把不稳定的测试或可疑的节点单独关起来，不阻断主流程",
+        "src": "curated"
+      }
+    ],
+    "query string": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "Web",
+        "zh": "查询字符串",
+        "note": "URL 里 ?a=1&b=2 那段",
+        "src": "curated"
+      }
+    ],
+    "quiesce": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "静默、停止活动",
+        "note": "让系统停止接受新请求并把手头的做完，便于维护。动词",
+        "src": "curated"
+      }
+    ],
+    "quorum": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "法定人数",
+        "note": "过半即可决策，如 3 节点里 2 个同意",
+        "src": "curated"
+      }
+    ],
+    "quota": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "云",
+        "zh": "配额",
+        "note": "配额上限。不是「定额」那种会计说法",
+        "src": "curated"
+      }
+    ],
+    "race condition": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "竞态条件",
+        "note": "结果取决于执行顺序的 bug。常简称 race",
+        "src": "curated"
+      }
+    ],
+    "rate limit": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "限流",
+        "note": "限制单位时间内的请求数。超了返回 429",
+        "src": "curated"
+      }
+    ],
+    "rbac": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "基于角色的访问控制",
+        "note": "按角色授权，不按人授权",
+        "src": "curated"
+      }
+    ],
+    "reconcile": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "云",
+        "zh": "调和、收敛",
+        "note": "K8s 里把一个对象的实际状态拉向期望状态。不是「和解」",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "调和、协调",
+        "note": "React 比对新旧虚拟树、算出最小更新。和 K8s 那个 reconcile 是同一个词的两种用法",
+        "src": "curated"
+      }
+    ],
+    "recursion": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "递归",
+        "note": "注意：中文里「递归」是正确写法，「递推」是另一个意思（iteration）",
+        "src": "curated"
+      }
+    ],
+    "redirect": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "Web",
+        "zh": "重定向",
+        "note": "301 永久 / 302 临时 / 307 保留方法的临时跳转",
+        "src": "curated"
+      }
+    ],
+    "reentrant": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "可重入",
+        "note": "执行到一半被再次调用也安全。和 thread-safe 不是一回事",
+        "src": "curated"
+      }
+    ],
+    "refactor": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "重构",
+        "note": "改结构不改行为。不是「重新分解」",
+        "src": "curated"
+      }
+    ],
+    "referential transparency": [
+      {
+        "fields": [
+          "范式"
+        ],
+        "aspect": "",
+        "zh": "引用透明",
+        "note": "表达式可以直接换成它的值而不改变程序行为",
+        "src": "curated"
+      }
+    ],
+    "reflection": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "反射",
+        "note": "运行时检查/修改自身结构。不是「反射光」也不是「反思」",
+        "src": "curated"
+      }
+    ],
+    "reflow": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "重排",
+        "note": "重新计算布局，开销大。也叫 layout",
+        "src": "curated"
+      }
+    ],
+    "registry": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "注册表、源",
+        "note": "npm registry = 包仓库。Docker registry = 镜像仓库。不是 Windows「注册表」",
+        "src": "curated"
+      }
+    ],
+    "regression": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "回归（测试）",
+        "note": "改一处结果弄坏了原本好的功能。不是统计学的「回归」",
+        "src": "curated"
+      }
+    ],
+    "release candidate": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "候选版本",
+        "note": "缩写 RC，如 v2.0.0-rc.1",
+        "src": "curated"
+      }
+    ],
+    "render": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "渲染",
+        "note": "把数据变成界面。React 的 render 更多是「计算要显示什么」",
+        "src": "curated"
+      }
+    ],
+    "repaint": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "重绘",
+        "note": "只重画颜色不改布局，比重排便宜",
+        "src": "curated"
+      }
+    ],
+    "replication": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "复制、主从同步",
+        "note": "把数据同步到多个副本。不是「重复」",
+        "src": "curated"
+      }
+    ],
+    "reproducible build": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "可复现构建",
+        "note": "同样源码+同样环境，产出逐字节一致",
+        "src": "curated"
+      }
+    ],
+    "resilient": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "有韧性的、可恢复的",
+        "note": "故障后能自己恢复。和 robust 侧重点不同",
+        "src": "curated"
+      }
+    ],
+    "resolve": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "解析",
+        "note": "DNS 把域名解析成 IP",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "构建",
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "解析",
+        "note": "依赖解析：确定最终用哪个版本",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "异步",
+        "zh": "决议、兑现",
+        "note": "Promise resolved，与 rejected 相对。不是「解决」",
+        "src": "curated"
+      }
+    ],
+    "responsive": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "响应式的",
+        "note": "随屏幕尺寸自适应。不是「反应灵敏」",
+        "src": "curated"
+      }
+    ],
+    "rest": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "表述性状态转移",
+        "note": "几乎没人真的这么译，都直接说 REST / RESTful",
+        "src": "curated"
+      }
+    ],
+    "rest parameter": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "剩余参数",
+        "note": "function f(...args) 里的 ...args",
+        "src": "curated"
+      }
+    ],
+    "retry": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "重试",
+        "note": "配合 backoff + jitter 才安全，否则容易打垮下游",
+        "src": "curated"
+      }
+    ],
+    "reverse proxy": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "反向代理",
+        "note": "挡在服务器前面替它接客（如 Nginx）。和正向代理方向相反",
+        "src": "curated"
+      }
+    ],
+    "revocation": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "吊销",
+        "note": "证书作废。CRL / OCSP 是两种吊销查询方式",
+        "src": "curated"
+      }
+    ],
+    "robust": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "健壮的",
+        "note": "能应付异常输入不崩。中文技术圈固定译作「健壮」",
+        "src": "curated"
+      }
+    ],
+    "rollback": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "回滚",
+        "note": "退回到上一个可用版本。不是「倒带」",
+        "src": "curated"
+      }
+    ],
+    "rolling update": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "滚动更新",
+        "note": "一批批换实例，全程不中断服务",
+        "src": "curated"
+      }
+    ],
+    "rollout": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "发布、灰度推进",
+        "note": "逐步放量的过程，和 rollback 相对",
+        "src": "curated"
+      }
+    ],
+    "rotate": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "轮换",
+        "note": "rotate a key = 定期换新密钥。不是「旋转」",
+        "src": "curated"
+      }
+    ],
+    "rpc": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "远程过程调用",
+        "note": "像调本地函数一样调远端。gRPC 是它的现代实现",
+        "src": "curated"
+      }
+    ],
+    "rubber duck": [
+      {
+        "fields": [
+          "工程",
+          "俚语"
+        ],
+        "aspect": "",
+        "zh": "小黄鸭（调试法）",
+        "note": "对着橡皮鸭把问题讲一遍，讲着讲着自己就想通了",
+        "src": "curated"
+      }
+    ],
+    "runbook": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "操作手册",
+        "note": "值班时照着做的处置步骤。不是「运行手册」那种字面理解",
+        "src": "curated"
+      }
+    ],
+    "saga": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "saga（长事务补偿模式）",
+        "note": "把分布式长事务拆成一串本地事务，失败就逐步补偿。通常不译",
+        "src": "curated"
+      }
+    ],
+    "salient": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "显著的、突出的",
+        "note": "salient features = 显著特征。不是「凸出的」",
+        "src": "curated"
+      }
+    ],
+    "salt": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "盐（值）",
+        "note": "哈希前加的随机串，防彩虹表。不是食盐",
+        "src": "curated"
+      }
+    ],
+    "same origin": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "Web",
+        "zh": "同源",
+        "note": "协议+域名+端口三者全同才算同源。不是「同一个来源」这种泛义",
+        "src": "curated"
+      }
+    ],
+    "sandbox": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "沙箱、沙盒",
+        "note": "受限的执行环境。动词义「隔离起来跑」也常用",
+        "src": "curated"
+      }
+    ],
+    "sane": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "合理的、靠谱的",
+        "note": "sane default = 合理的默认值。不是「神志清醒」",
+        "src": "curated"
+      }
+    ],
+    "sanitize": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "净化、清洗",
+        "note": "sanitize input = 过滤掉危险内容。不是「消毒」",
+        "src": "curated"
+      }
+    ],
+    "sanity check": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "健全性检查",
+        "note": "快速确认没有明显错误。和 smoke test 常混用",
+        "src": "curated"
+      }
+    ],
+    "scaffold": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "脚手架",
+        "note": "一键生成项目骨架代码的工具",
+        "src": "curated"
+      }
+    ],
+    "scheduler": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "调度器",
+        "note": "决定谁先跑。不是「计划表」",
+        "src": "curated"
+      }
+    ],
+    "schema": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "模式、结构定义",
+        "note": "数据长什么样的定义。不是「图解」；也指结构化数据标记（schema.org）",
+        "src": "curated"
+      }
+    ],
+    "seam": [
+      {
+        "fields": [
+          "架构",
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "接缝",
+        "note": "可以插入替身/改行为的位置。来自《修改代码的艺术》",
+        "src": "curated"
+      }
+    ],
+    "secret": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "密钥、凭据",
+        "note": "K8s 里的 Secret 对象、CI 里的 secrets。不是「秘密」这种泛义",
+        "src": "curated"
+      }
+    ],
+    "seed data": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "种子数据",
+        "note": "初始化时灌进去的基础数据。不是「种子」那种农业义",
+        "src": "curated"
+      }
+    ],
+    "selectivity": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "选择率",
+        "note": "过滤掉多少数据的比例，越高越适合走索引",
+        "src": "curated"
+      }
+    ],
+    "self healing": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "自愈",
+        "note": "挂了自动拉起/替换。不是医学的「自愈」那种修辞",
+        "src": "curated"
+      }
+    ],
+    "self signed": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "自签名的",
+        "note": "自己给自己签的证书，浏览器会警告",
+        "src": "curated"
+      }
+    ],
+    "semantic release": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "语义化发布",
+        "note": "根据 commit message 自动决定版本号并发布",
+        "src": "curated"
+      }
+    ],
+    "semaphore": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "信号量",
+        "note": "计数式同步原语，控制「同时最多几个」；不要和 mutex 混",
+        "src": "curated"
+      }
+    ],
+    "semver": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "语义化版本",
+        "note": "major.minor.patch。常直接用 semver",
+        "src": "curated"
+      }
+    ],
+    "sentinel": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "哨兵（值）",
+        "note": "用特殊值标记边界/结束，如链表尾的 null",
+        "src": "curated"
+      }
+    ],
+    "service mesh": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "服务网格",
+        "note": "把服务间通信的治理下沉到边车，如 Istio",
+        "src": "curated"
+      }
+    ],
+    "session": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "Web",
+        "zh": "会话",
+        "note": "一次连续的交互过程。服务器端的「会话状态」",
+        "src": "curated"
+      }
+    ],
+    "shadow": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "遮蔽",
+        "note": "变量遮蔽：内层同名变量盖住外层",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "Web",
+        "zh": "影子",
+        "note": "Shadow DOM：影子 DOM，样式隔离的子树",
+        "src": "curated"
+      }
+    ],
+    "shadowing": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "遮蔽",
+        "note": "内层同名变量盖住外层",
+        "src": "curated"
+      }
+    ],
+    "shard": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "分片（单个分片）",
+        "note": "名词指其中一片；动词指把数据切开。整体方案叫 sharding",
+        "src": "curated"
+      }
+    ],
+    "sharding": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "分片",
+        "note": "把数据按规则拆到多台机器。不是「碎片化」",
+        "src": "curated"
+      }
+    ],
+    "sharp edge": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "尖角、易割手的地方",
+        "note": "指设计上容易让人犯错的特性。和 footgun 近义",
+        "src": "curated"
+      }
+    ],
+    "shim": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "兼容层",
+        "zh": "垫片",
+        "note": "很薄的一层兼容代码，把旧接口垫成新接口",
+        "src": "curated"
+      }
+    ],
+    "shim layer": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "垫片层",
+        "note": "极薄的兼容层，和 shim 同源",
+        "src": "curated"
+      }
+    ],
+    "side effect": [
+      {
+        "fields": [
+          "语言",
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "副作用",
+        "note": "函数除了返回值还改了外部状态。打包里也指「import 时有额外动作」",
+        "src": "curated"
+      }
+    ],
+    "sidecar": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "边车（容器）",
+        "note": "跟主容器同生共死、帮它干杂活的辅助容器",
+        "src": "curated"
+      }
+    ],
+    "signature": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "签名",
+        "note": "用私钥对摘要签名。注意别和哈希混为一谈",
+        "src": "curated"
+      }
+    ],
+    "singleton": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "单例",
+        "note": "全局只有一个实例。现在多半被当成反模式",
+        "src": "curated"
+      }
+    ],
+    "skeleton screen": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "骨架屏",
+        "note": "内容没来之前先显示灰色占位块",
+        "src": "curated"
+      }
+    ],
+    "slo": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "服务级别目标",
+        "note": "SLI=指标、SLO=目标、SLA=对外承诺。三个别混",
+        "src": "curated"
+      }
+    ],
+    "slot": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "插槽",
+        "note": "Web Components / Vue 里给外部填内容的占位",
+        "src": "curated"
+      }
+    ],
+    "smoke test": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "冒烟测试",
+        "note": "只验证「基本能跑起来」的最粗测试。不是真的测冒烟",
+        "src": "curated"
+      }
+    ],
+    "snapshot test": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "快照测试",
+        "note": "同上，前端圈叫快照测试",
+        "src": "curated"
+      }
+    ],
+    "solid": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "SOLID 原则",
+        "note": "五个面向对象设计原则的首字母缩写，通常不翻译",
+        "src": "curated"
+      }
+    ],
+    "source map": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "源码映射",
+        "note": "把压缩后的代码位置映射回源码，便于调试",
+        "src": "curated"
+      }
+    ],
+    "spawn": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "启动、派生",
+        "note": "启动一个子进程，如 spawn a child process",
+        "src": "curated"
+      }
+    ],
+    "spike": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "探针、冲刺",
+        "note": "敏捷里为一件事专门开的小任务",
+        "src": "curated"
+      }
+    ],
+    "spinlock": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "自旋锁",
+        "note": "抢不到就原地空转反复试（busy-wait），适合持锁极短的场景",
+        "src": "curated"
+      }
+    ],
+    "spread": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "展开",
+        "note": "...arr 把数组摊开",
+        "src": "curated"
+      }
+    ],
+    "spy": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "间谍（对象）",
+        "note": "包住真实函数、记录调用情况但保留原行为。和 mock 的区别在这",
+        "src": "curated"
+      }
+    ],
+    "ssr": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "服务端渲染",
+        "note": "Server-Side Rendering。另有 CSR/SSG/ISR，都是一组缩写",
+        "src": "curated"
+      }
+    ],
+    "stacking context": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "层叠上下文",
+        "note": "决定 z-index 谁能压谁的规则域",
+        "src": "curated"
+      }
+    ],
+    "stale": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "缓存/状态",
+        "zh": "陈旧的、失效的",
+        "note": "stale cache=内容存在但已过期；stale closure=闭包捕获了旧值",
+        "src": "curated"
+      }
+    ],
+    "starvation": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "饥饿",
+        "note": "某任务永远抢不到资源。不是「饿死」，是调度不公平",
+        "src": "curated"
+      }
+    ],
+    "state": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "状态",
+        "note": "会随交互变化的数据。和 props 的区别：state 自己管，props 别人给",
+        "src": "curated"
+      }
+    ],
+    "stateful": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "有状态的",
+        "note": "需要保留上下文/数据的服务，如数据库",
+        "src": "curated"
+      }
+    ],
+    "stateless": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "无状态的",
+        "note": "自己不存会话，所以随便哪台都能处理。不是「没有状态」的贬义",
+        "src": "curated"
+      }
+    ],
+    "sticky session": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "会话保持",
+        "note": "同一个用户的请求固定发到同一台后端",
+        "src": "curated"
+      }
+    ],
+    "strangler fig": [
+      {
+        "fields": [
+          "架构"
+        ],
+        "aspect": "",
+        "zh": "绞杀者（模式）",
+        "note": "新系统一点点长出来包住老系统，直到老系统可以拔掉",
+        "src": "curated"
+      }
+    ],
+    "strong consistency": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "强一致性",
+        "note": "写完立刻所有人读到新值",
+        "src": "curated"
+      }
+    ],
+    "structural typing": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "结构化类型",
+        "note": "看「长得像不像」而不是「叫什么名字」（TypeScript 就是它）",
+        "src": "curated"
+      }
+    ],
+    "stub": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "桩",
+        "note": "只留签名、没有真实实现的占位函数",
+        "src": "curated"
+      }
+    ],
+    "sunk cost": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "沉没成本",
+        "note": "已经投入且收不回的部分，不该影响后续决策",
+        "src": "curated"
+      }
+    ],
+    "supply chain": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "供应链",
+        "note": "supply chain attack = 通过污染第三方依赖来攻击",
+        "src": "curated"
+      }
+    ],
+    "surge": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "云",
+        "zh": "突发流量、激增",
+        "note": "流量猛涨。不是「浪涌」那种电学直译",
+        "src": "curated"
+      }
+    ],
+    "suspense": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "悬念（组件）",
+        "note": "React 里等待异步时的占位机制。通常不译",
+        "src": "curated"
+      }
+    ],
+    "swap": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "交换（分区）、换出",
+        "note": "把内存页挪到磁盘。另有「swap 两个变量」的意思",
+        "src": "curated"
+      }
+    ],
+    "syscall": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "系统调用",
+        "note": "程序请求内核做事的入口，如 read/write/open",
+        "src": "curated"
+      }
+    ],
+    "sysfs": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "sysfs",
+        "note": "Linux 暴露内核对象的虚拟文件系统，通常不翻译",
+        "src": "curated"
+      }
+    ],
+    "tail call": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "尾调用",
+        "note": "函数的最后一步是调用另一个函数，可优化掉栈帧",
+        "src": "curated"
+      }
+    ],
+    "tarball": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "压缩包",
+        "note": "npm 发布的 .tgz 包；也指源码打包产物",
+        "src": "curated"
+      }
+    ],
+    "tdd": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "测试驱动开发",
+        "note": "先写失败的测试，再写实现让它通过",
+        "src": "curated"
+      }
+    ],
+    "teardown": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "拆解、清理",
+        "note": "测试跑完后的清理步骤，和 setup 相对",
+        "src": "curated"
+      }
+    ],
+    "technical debt": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "技术债",
+        "note": "为赶进度做的妥协，将来要还利息",
+        "src": "curated"
+      }
+    ],
+    "technical spike": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "技术探针",
+        "note": "为降低不确定性做的一次性调研/原型。不是「尖刺」",
+        "src": "curated"
+      }
+    ],
+    "test double": [
+      {
+        "fields": [
+          "测试"
+        ],
+        "aspect": "",
+        "zh": "测试替身",
+        "note": "stub/mock/spy/fake 的统称，源自电影「替身演员」",
+        "src": "curated"
+      }
+    ],
+    "thrash": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "抖动、颠簸",
+        "note": "内存不够，反复换页导致性能崩掉。不是「痛打」",
+        "src": "curated"
+      }
+    ],
+    "thread": [
+      {
+        "fields": [
+          "系统",
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "线程",
+        "note": "不是「线」。操作系统调度的最小单位，与 process(进程) 相对",
+        "src": "curated"
+      }
+    ],
+    "thread safe": [
+      {
+        "fields": [
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "线程安全的",
+        "note": "多线程同时用不会出问题。常简称「线程安全」",
+        "src": "curated"
+      }
+    ],
+    "threat model": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "威胁模型",
+        "note": "先明确「要防谁、防什么」，再谈措施",
+        "src": "curated"
+      }
+    ],
+    "throttle": [
+      {
+        "fields": [
+          "性能"
+        ],
+        "aspect": "",
+        "zh": "节流",
+        "note": "限制单位时间内最多执行 N 次（如每秒最多 1 次）",
+        "src": "curated"
+      }
+    ],
+    "throttling": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "云",
+        "zh": "限流、节流",
+        "note": "和 rate limit 常互换，但 throttling 更强调「压慢」",
+        "src": "curated"
+      }
+    ],
+    "throughput": [
+      {
+        "fields": [
+          "性能"
+        ],
+        "aspect": "",
+        "zh": "吞吐量",
+        "note": "单位时间能处理多少。和 latency 是一对，别混",
+        "src": "curated"
+      }
+    ],
+    "thundering herd": [
+      {
+        "fields": [
+          "分布式"
+        ],
+        "aspect": "",
+        "zh": "惊群（效应）",
+        "note": "大量请求同时涌向刚恢复的服务/同一个资源",
+        "src": "curated"
+      }
+    ],
+    "thunk": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "thunk（延迟计算的包装）",
+        "note": "包一层函数把计算推迟。Redux 的 redux-thunk 就是它",
+        "src": "curated"
+      }
+    ],
+    "timing attack": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "时序攻击",
+        "note": "靠比较耗时的细微差异猜出内容",
+        "src": "curated"
+      }
+    ],
+    "toil": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "重复性苦工",
+        "note": "SRE 术语：手工、重复、可自动化、无长期价值的工作",
+        "src": "curated"
+      }
+    ],
+    "tombstone": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "墓碑（标记）",
+        "note": "标记「这条已删除」的占位记录，分布式删除常用",
+        "src": "curated"
+      }
+    ],
+    "trace": [
+      {
+        "fields": [
+          "运维"
+        ],
+        "aspect": "",
+        "zh": "追踪、（调用）链路",
+        "note": "distributed tracing = 分布式链路追踪。另有 stack trace = 堆栈跟踪，同词不同侧重",
+        "src": "curated"
+      }
+    ],
+    "trait": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "特征、trait",
+        "note": "Rust/Scala 的行为抽象。中文圈常直接用 trait",
+        "src": "curated"
+      }
+    ],
+    "transaction": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "事务",
+        "note": "一组要么全成功要么全回滚的操作。不是「交易」（那是 finance）",
+        "src": "curated"
+      }
+    ],
+    "transitive dependency": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "传递依赖",
+        "note": "你依赖的包所依赖的包。俗称「间接依赖」",
+        "src": "curated"
+      }
+    ],
+    "transparent": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "透明的、无感的",
+        "note": "transparent proxy = 对调用方无感的代理。不是「透明玻璃」",
+        "src": "curated"
+      }
+    ],
+    "transpile": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "转译",
+        "note": "语言到语言的转换（TS→JS），区别于 compile（编译到机器码）",
+        "src": "curated"
+      }
+    ],
+    "tree shaking": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "摇树优化",
+        "note": "打包时去掉没被引用的代码。中文圈也常说「tree shaking」不译",
+        "src": "curated"
+      }
+    ],
+    "triage": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "分诊、分级处理",
+        "note": "对一堆 issue/告警按优先级分类。借自医疗词",
+        "src": "curated"
+      }
+    ],
+    "truncate": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "数据库",
+        "zh": "清空、截断",
+        "note": "TRUNCATE TABLE 是清空整张表，不是「截断部分数据」",
+        "src": "curated"
+      },
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "字符串/UI",
+        "zh": "截断",
+        "note": "超长文本截断显示",
+        "src": "curated"
+      }
+    ],
+    "trusted types": [
+      {
+        "fields": [
+          "前端",
+          "安全"
+        ],
+        "aspect": "Web",
+        "zh": "可信类型",
+        "note": "CSP 指令 require-trusted-types-for，会拦截 innerHTML 等注入水槽",
+        "src": "curated"
+      }
+    ],
+    "truthy": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "真值的",
+        "note": "在布尔上下文里算 true。falsy 是反义。中文圈常直接说 truthy/falsy",
+        "src": "curated"
+      }
+    ],
+    "ttl": [
+      {
+        "fields": [
+          "网络",
+          "数据"
+        ],
+        "aspect": "缓存",
+        "zh": "存活时间",
+        "note": "Time To Live：缓存/记录多久过期。不是「生存时间」这种生物义",
+        "src": "curated"
+      }
+    ],
+    "type guard": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "类型守卫",
+        "note": "一段运行时检查，让编译器收窄类型",
+        "src": "curated"
+      }
+    ],
+    "type inference": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "类型推断",
+        "note": "不写类型让编译器自己推。不是「类型推理」那种逻辑义",
+        "src": "curated"
+      }
+    ],
+    "union type": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "联合类型",
+        "note": "A | B，是其中之一",
+        "src": "curated"
+      }
+    ],
+    "upsert": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "插入或更新",
+        "note": "update + insert 合成词，通常不译",
+        "src": "curated"
+      }
+    ],
+    "upstream": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "上游",
+        "note": "请求流向上更靠近数据源的一方（如被代理的后端）",
+        "src": "curated"
+      }
+    ],
+    "userland": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "用户态、用户空间",
+        "note": "内核之外的一切。常作定语：userland tools",
+        "src": "curated"
+      }
+    ],
+    "vacuum": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "清理、回收",
+        "note": "PostgreSQL 里回收死元组。不是「吸尘器」",
+        "src": "curated"
+      }
+    ],
+    "variadic": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "可变参数的",
+        "note": "参数个数不定，如 printf。不是「多样的」",
+        "src": "curated"
+      }
+    ],
+    "variance": [
+      {
+        "fields": [
+          "类型"
+        ],
+        "aspect": "",
+        "zh": "型变",
+        "note": "统称协变/逆变/不变。不是统计学的「方差」",
+        "src": "curated"
+      }
+    ],
+    "vault": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "密钥保管库",
+        "note": "集中存密钥/凭据的服务（如 HashiCorp Vault）",
+        "src": "curated"
+      }
+    ],
+    "vendoring": [
+      {
+        "fields": [
+          "依赖"
+        ],
+        "aspect": "",
+        "zh": "依赖内置（vendor）",
+        "note": "把第三方依赖源码抄进自己仓库，避免外部变动",
+        "src": "curated"
+      }
+    ],
+    "verbatim": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "",
+        "zh": "逐字的、原样的",
+        "note": "copy verbatim = 一字不改地复制",
+        "src": "curated"
+      }
+    ],
+    "viewport": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "视口",
+        "note": "可见区域。单位 vh/vw 就是它",
+        "src": "curated"
+      }
+    ],
+    "virtual dom": [
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "",
+        "zh": "虚拟 DOM",
+        "note": "用 JS 对象描述界面，比对后再操作真实 DOM",
+        "src": "curated"
+      }
+    ],
+    "volatile": [
+      {
+        "fields": [
+          "语言",
+          "并发"
+        ],
+        "aspect": "",
+        "zh": "易变的、volatile",
+        "note": "告诉编译器「别优化掉这次读写」。Java/C 里常直接不翻译",
+        "src": "curated"
+      }
+    ],
+    "wal": [
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "",
+        "zh": "预写日志",
+        "note": "Write-Ahead Log：先写日志再改数据，保证崩溃可恢复",
+        "src": "curated"
+      }
+    ],
+    "watch mode": [
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "监听模式",
+        "note": "盯着文件变化自动重建",
+        "src": "curated"
+      }
+    ],
+    "weak reference": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "弱引用",
+        "note": "不阻止对象被回收的引用，用于缓存/防泄漏",
+        "src": "curated"
+      }
+    ],
+    "websocket": [
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "",
+        "zh": "WebSocket",
+        "note": "全双工长连接。通常不译",
+        "src": "curated"
+      }
+    ],
+    "wip": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "进行中",
+        "note": "Work In Progress。也指「在制品数量」这个精益指标",
+        "src": "curated"
+      }
+    ],
+    "xss": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "跨站脚本（攻击）",
+        "note": "把脚本注入到别人页面里执行。和 CSRF 是两回事",
+        "src": "curated"
+      }
+    ],
+    "yagni": [
+      {
+        "fields": [
+          "工程"
+        ],
+        "aspect": "",
+        "zh": "你不需要它",
+        "note": "You Aren't Gonna Need It：别为想象中的需求提前写代码",
+        "src": "curated"
+      }
+    ],
+    "yak": [
+      {
+        "fields": [
+          "工程",
+          "俚语"
+        ],
+        "aspect": "",
+        "zh": "牦牛",
+        "note": "yak shaving 里的牦牛，指那些层层跑偏的前置任务",
+        "src": "curated"
+      }
+    ],
+    "yak shaving": [
+      {
+        "fields": [
+          "通用",
+          "俚语"
+        ],
+        "aspect": "",
+        "zh": "剃牦牛",
+        "note": "为了做 A 得先做 B，为了 B 又得先做 C……层层跑偏",
+        "src": "curated"
+      }
+    ],
+    "yield": [
+      {
+        "fields": [
+          "语言"
+        ],
+        "aspect": "",
+        "zh": "产出、让出",
+        "note": "生成器里吐出值；线程里是「让出 CPU」",
+        "src": "curated"
+      }
+    ],
+    "zero day": [
+      {
+        "fields": [
+          "安全"
+        ],
+        "aspect": "",
+        "zh": "零日（漏洞）",
+        "note": "厂商还没来得及修就被利用的漏洞",
+        "src": "curated"
+      }
+    ],
+    "zombie": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "",
+        "zh": "僵尸进程",
+        "note": "已结束但父进程没回收状态，占着进程表项。不是「丧尸」",
+        "src": "curated"
+      }
+    ],
+    "global": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "变量作用域",
+        "zh": "全局",
+        "note": "函数或类外部可访问的变量或作用域",
+        "src": "api"
+      },
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "版本控制/Git",
+        "zh": "全局",
+        "note": "作用于所有仓库的用户级配置",
+        "src": "api"
+      },
+      {
+        "fields": [
+          "网络"
+        ],
+        "aspect": "分布式系统",
+        "zh": "全局",
+        "note": "跨节点统一的状态或命名空间",
+        "src": "api"
+      },
+      {
+        "fields": [
+          "前端"
+        ],
+        "aspect": "CSS",
+        "zh": "全局",
+        "note": "影响整个文档的样式或选择器",
+        "src": "api"
+      },
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "操作系统/环境",
+        "zh": "全局",
+        "note": "对所有进程生效的环境变量或设置",
+        "src": "api"
+      }
+    ],
+    "revision": [
+      {
+        "fields": [
+          "系统"
+        ],
+        "aspect": "版本控制",
+        "zh": "修订版",
+        "note": "Git 提交历史中的一次版本记录",
+        "src": "api"
+      },
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "文档",
+        "zh": "修订",
+        "note": "文档编辑后产生的版本变更",
+        "src": "api"
+      },
+      {
+        "fields": [
+          "构建"
+        ],
+        "aspect": "",
+        "zh": "版本号",
+        "note": "构建产物或发布包的版本标识",
+        "src": "api"
+      },
+      {
+        "fields": [
+          "数据"
+        ],
+        "aspect": "数据库",
+        "zh": "修订号",
+        "note": "数据库迁移脚本的版本编号",
+        "src": "api"
+      }
+    ],
+    "reasoning content": [
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "AI",
+        "zh": "推理内容",
+        "note": "大模型输出中思维链部分的文本",
+        "src": "api"
+      },
+      {
+        "fields": [
+          "通用"
+        ],
+        "aspect": "AI",
+        "zh": "推理过程",
+        "note": "模型展示解题步骤的中间输出",
+        "src": "api"
+      }
+    ]
+  }
+}

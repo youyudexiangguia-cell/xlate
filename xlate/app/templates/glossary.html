@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script'">
+<title>{{title}}</title>
+<style>
+  :root { --bd:#d1d5db; --mut:#6b7280; --blue:#1d4ed8; --bg:#f9fafb; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+         font-size:14px; color:#111827; background:var(--bg); }
+  header { background:#fff; border-bottom:1px solid var(--bd); padding:10px 18px;
+           display:flex; align-items:center; gap:18px; position:sticky; top:0; z-index:5; }
+  header .brand { font-weight:700; font-size:15px; }
+  header nav a { color:var(--mut); text-decoration:none; margin-right:14px; }
+  header nav a.on { color:var(--blue); font-weight:600; }
+  main { max-width:1000px; margin:22px auto; padding:0 18px; }
+  .card { background:#fff; border:1px solid var(--bd); border-radius:8px; padding:16px;
+          margin-bottom:16px; }
+  h1 { font-size:19px; margin:0 0 12px; }
+  input[type=text], select { padding:8px 10px; border:1px solid var(--bd);
+                             border-radius:6px; font-size:14px; }
+  button { padding:8px 14px; border:1px solid var(--bd); border-radius:6px;
+           background:#fff; cursor:pointer; font-size:14px; }
+  button:hover { background:#f3f4f6; }
+  button.primary { background:var(--blue); color:#fff; border-color:var(--blue); }
+  .row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .mut { color:var(--mut); font-size:12px; }
+  .tag { display:inline-block; font-size:11px; padding:1px 7px; border-radius:10px; }
+  .tag.api { background:#fef3c7; color:#92400e; }
+  .tag.f { background:#e0e7ff; color:#3730a3; margin-right:4px; }
+  .tag.cur { background:#dcfce7; color:#166534; }
+  table { width:100%; border-collapse:collapse; }
+  th, td { text-align:left; padding:8px; border-bottom:1px solid #f3f4f6; vertical-align:top; }
+  th { color:var(--mut); font-size:12px; font-weight:600; }
+  code { background:#f3f4f6; padding:1px 5px; border-radius:4px; font-size:12.5px; }
+  .msg { color:var(--mut); padding:12px 0; }
+  .msg.ok  { color:#166534; }
+  .msg.err { color:#b91c1c; }
+  /* 行内操作 */
+  .acts { margin-top:5px; display:flex; gap:8px; align-items:center; }
+  a.act, button.act {
+    font-size:12px; color:var(--blue); text-decoration:none; background:none;
+    border:0; padding:0; cursor:pointer; font-family:inherit;
+  }
+  a.act:hover, button.act:hover { text-decoration:underline; }
+  button.act.danger { color:#b91c1c; }
+  a.btn-link {
+    padding:8px 14px; border:1px solid var(--bd); border-radius:6px;
+    text-decoration:none; color:#111827; font-size:14px; display:inline-block;
+  }
+  a.btn-link:hover { background:#f3f4f6; }
+  a.btn-link.primary { background:var(--blue); color:#fff; border-color:var(--blue); }
+  a.btn-link.primary:hover { background:#1e40af; }
+  .zh { font-weight:600; color:var(--blue); }
+  .note { color:#4b5563; margin-top:3px; line-height:1.5; font-size:13px; }
+  .pager { display:flex; gap:10px; align-items:center; margin-top:12px; }
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">xlate</span>
+  <nav>
+    <a href="/" id="nav-lookup">查词</a>
+    <a href="/glossary" id="nav-glossary">词库</a>
+    <a href="/stats" id="nav-stats">统计</a>
+    <a href="/docs" target="_blank" rel="noopener">API</a>
+  </nav>
+</header>
+<main>
+  <div class="card">
+    <h1>词库</h1>
+    <div class="row">
+      <input type="text" id="q" placeholder="搜索 key 或译法" style="flex:1;min-width:220px">
+      <select id="field"><option value="">全部领域</option></select>
+      <button class="primary" id="go">搜索</button>
+      <a class="btn-link primary" href="/new">＋ 新建词条</a>
+      <button id="export">导出 JSON</button>
+    </div>
+    <div class="mut" id="counts" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <div id="rowmsg" class="msg" style="display:none"></div>
+    <table>
+      <thead><tr><th style="width:26%">key</th><th>义项</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div id="msg" class="msg" style="display:none"></div>
+    <div class="pager">
+      <button id="prev">上一页</button>
+      <span class="mut" id="page"></span>
+      <button id="next">下一页</button>
+    </div>
+  </div>
+</main>
+
+<script>
+'use strict';
+/* 零 innerHTML（README §7.1） */
+const $ = (id) => document.getElementById(id);
+const PAGE = 50;
+let offset = 0, total = 0;
+
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined && text !== null) n.textContent = String(text);
+  return n;
+}
+
+function setNav() {
+  const a = $('nav-{{nav}}');
+  if (a) a.className = 'on';
+}
+
+function renderTermRow(key, senses) {
+  const tr = el('tr');
+  const tdKey = el('td');
+  tdKey.appendChild(el('code', null, key));
+
+  // 行内操作：编辑 / 删除
+  const acts = el('div', 'acts');
+  acts.appendChild(makeEditLink(key));
+  const del = document.createElement('button');
+  del.type = 'button';
+  del.className = 'act danger';
+  del.textContent = '删除';
+  del.addEventListener('click', () => deleteTerm(key, del));
+  acts.appendChild(del);
+  tdKey.appendChild(acts);
+
+  tr.appendChild(tdKey);
+
+  const tdS = el('td');
+  for (const s of senses) {
+    const box = el('div', 'sense');
+    const head = el('div', 'row');
+    for (const f of (s.fields && s.fields.length ? s.fields : ['(未标注)'])) {
+      head.appendChild(el('span', 'tag f', f));
+    }
+    if (s.aspect) head.appendChild(el('span', 'tag f', s.aspect));
+    head.appendChild(el('span', 'zh', s.zh || ''));
+    head.appendChild(el('span', 'tag ' + (s.src === 'api' ? 'api' : 'cur'),
+                        s.src === 'api' ? '未复核' : '人工确认'));
+    box.appendChild(head);
+    if (s.note) box.appendChild(el('div', 'note', s.note));
+    tdS.appendChild(box);
+  }
+  tr.appendChild(tdS);
+  return tr;
+}
+
+function makeLink(href, text, cls) {
+  const a = document.createElement('a');
+  a.href = href;
+  a.textContent = text;
+  a.className = cls || 'act';
+  return a;
+}
+
+function makeEditLink(key) {
+  return makeLink('/edit/' + encodeURIComponent(key), '编辑');
+}
+
+/** 行内删除：先确认，再 DELETE，成功后重载当前页。 */
+async function deleteTerm(key, btn) {
+  if (!window.confirm('确定删除整个词条「' + key + '」？\n\n此操作不可撤销。')) return;
+  btn.disabled = true;
+  try {
+    const r = await fetch('/api/glossary/' + encodeURIComponent(key), { method: 'DELETE' });
+    if (!r.ok) {
+      let d = 'HTTP ' + r.status;
+      try { const j = await r.json(); if (j.detail) d = j.detail; } catch (e) {}
+      showRowMsg('删除失败：' + d, true);
+      btn.disabled = false;
+      return;
+    }
+    showRowMsg('已删除「' + key + '」', false);
+    load();
+  } catch (e) {
+    showRowMsg('删除异常：' + (e && e.message ? e.message : e), true);
+    btn.disabled = false;
+  }
+}
+
+function showRowMsg(text, isErr) {
+  const m = $('rowmsg');
+  m.style.display = '';
+  m.className = 'msg' + (isErr ? ' err' : ' ok');
+  m.textContent = text;
+  if (!isErr) setTimeout(() => { m.style.display = 'none'; }, 4000);
+}
+
+async function load() {
+  const q = $('q').value.trim();
+  const field = $('field').value;
+  const url = '/api/glossary?q=' + encodeURIComponent(q) +
+              '&field=' + encodeURIComponent(field) +
+              '&limit=' + PAGE + '&offset=' + offset;
+  const tbody = $('rows');
+  tbody.replaceChildren();
+  const msg = $('msg');
+  msg.style.display = '';
+  msg.textContent = '载入中…';
+  try {
+    const r = await fetch(url);
+    const data = await r.json();
+    if (!r.ok) { msg.textContent = 'HTTP ' + r.status; return; }
+    const keys = Object.keys(data.terms);
+    total = data.counts.terms;
+    for (const k of keys) tbody.appendChild(renderTermRow(k, data.terms[k]));
+
+    msg.style.display = keys.length ? 'none' : '';
+    if (!keys.length) msg.textContent = '没有匹配的词条';
+
+    $('counts').textContent =
+      '词条 ' + data.counts.terms + '　义项 ' + data.counts.senses +
+      '　一词多义 ' + data.counts.polysemous + '　本页 ' + keys.length + ' 条';
+    $('page').textContent = 'offset ' + offset + ' / ' + total;
+    $('prev').disabled = offset <= 0;
+    $('next').disabled = offset + PAGE >= total;
+  } catch (err) {
+    msg.textContent = '请求失败：' + (err && err.message ? err.message : err);
+  }
+}
+
+async function loadFields() {
+  try {
+    const r = await fetch('/api/stats');
+    const d = await r.json();
+    const sel = $('field');
+    for (const f of d.fields) {
+      const o = document.createElement('option');
+      o.value = f.field;
+      o.textContent = f.field + ' (' + f.senses + ')';
+      sel.appendChild(o);
+    }
+  } catch (err) { /* 领域列表拿不到不阻塞主流程 */ }
+}
+
+$('go').addEventListener('click', () => { offset = 0; load(); });
+$('q').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { offset = 0; load(); }
+});
+$('field').addEventListener('change', () => { offset = 0; load(); });
+$('prev').addEventListener('click', () => { offset = Math.max(0, offset - PAGE); load(); });
+$('next').addEventListener('click', () => { offset += PAGE; load(); });
+$('export').addEventListener('click', () => { location.href = '/api/export'; });
+
+setNav();
+loadFields();
+load();
+</script>
+</body>
+</html>

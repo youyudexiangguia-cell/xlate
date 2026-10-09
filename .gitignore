@@ -1,0 +1,30 @@
+# ===== 机密：绝不入库 =====
+.env
+.env.*
+!.env.example
+.venv/
+
+# ===== 测试/诊断残留 =====
+xlate/.tmp-*/
+xlate/.norm-truth.json
+xlate/__pycache__/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ===== Matplotlib/uv 等缓存 =====
+.mplconfig/
+.uv-cache/
+*.egg-info/
+build/
+dist/
+
+# ===== 编辑器/系统 =====
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

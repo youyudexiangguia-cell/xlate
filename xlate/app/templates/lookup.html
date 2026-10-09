@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 与用户脚本一致的严格策略：诊断/前端代码必须自身合规（README §7.1） -->
+<meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script'">
+<title>{{title}}</title>
+<style>
+  :root { --bd:#d1d5db; --mut:#6b7280; --blue:#1d4ed8; --bg:#f9fafb; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+         font-size:14px; color:#111827; background:var(--bg); }
+  header { background:#fff; border-bottom:1px solid var(--bd); padding:10px 18px;
+           display:flex; align-items:center; gap:18px; position:sticky; top:0; z-index:5; }
+  header .brand { font-weight:700; font-size:15px; }
+  header nav a { color:var(--mut); text-decoration:none; margin-right:14px; }
+  header nav a.on { color:var(--blue); font-weight:600; }
+  main { max-width:900px; margin:22px auto; padding:0 18px; }
+  .card { background:#fff; border:1px solid var(--bd); border-radius:8px; padding:16px;
+          margin-bottom:16px; }
+  h1 { font-size:19px; margin:0 0 12px; }
+  h2 { font-size:15px; margin:0 0 10px; color:#374151; }
+  input[type=text], input[type=search], select {
+    padding:8px 10px; border:1px solid var(--bd); border-radius:6px; font-size:14px; }
+  button { padding:8px 14px; border:1px solid var(--bd); border-radius:6px;
+           background:#fff; cursor:pointer; font-size:14px; }
+  button:hover { background:#f3f4f6; }
+  button.primary { background:var(--blue); color:#fff; border-color:var(--blue); }
+  button.primary:hover { background:#1e40af; }
+  .row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .mut { color:var(--mut); font-size:12px; }
+  .tag { display:inline-block; font-size:11px; padding:1px 7px; border-radius:10px;
+         white-space:nowrap; }
+  .tag.local { background:#dcfce7; color:#166534; }
+  .tag.api   { background:#fef3c7; color:#92400e; }
+  .tag.err   { background:#fee2e2; color:#991b1b; }
+  .tag.f     { background:#e0e7ff; color:#3730a3; margin-right:4px; }
+  .sense { padding:10px 0; border-bottom:1px solid #f3f4f6; }
+  .sense:last-child { border-bottom:0; }
+  .zh { font-weight:600; color:var(--blue); font-size:15px; }
+  .note { color:#4b5563; margin-top:3px; line-height:1.5; }
+  table { width:100%; border-collapse:collapse; }
+  th, td { text-align:left; padding:7px 8px; border-bottom:1px solid #f3f4f6;
+           vertical-align:top; }
+  th { color:var(--mut); font-size:12px; font-weight:600; }
+  code { background:#f3f4f6; padding:1px 5px; border-radius:4px; font-size:12.5px; }
+  .msg { color:var(--mut); padding:12px 0; }
+  .msg.err { color:#b91c1c; }
+  .pager { display:flex; gap:10px; align-items:center; margin-top:12px; }
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">xlate</span>
+  <nav>
+    <a href="/" id="nav-lookup">查词</a>
+    <a href="/glossary" id="nav-glossary">词库</a>
+    <a href="/stats" id="nav-stats">统计</a>
+    <a href="/docs" target="_blank" rel="noopener">API</a>
+  </nav>
+</header>
+<main>
+  <div class="card">
+    <h1>查词</h1>
+    <form class="row" id="f">
+      <input type="text" id="q" name="term" placeholder="输入或粘贴英文技术词，如 backpressure"
+             autocomplete="off" autofocus style="flex:1;min-width:240px">
+      <button class="primary" type="submit">查询</button>
+    </form>
+    <div class="mut" style="margin-top:8px">
+      先查本地词库 → 未命中才调 LLM → 结果自动入库。结果会标注来源。
+    </div>
+  </div>
+
+  <div class="card" id="out-card" style="display:none">
+    <div class="row" style="justify-content:space-between">
+      <h2 id="out-term" style="margin:0"></h2>
+      <span id="out-tag"></span>
+    </div>
+    <div id="out-body" style="margin-top:6px"></div>
+    <div class="mut" id="out-extra" style="margin-top:10px"></div>
+  </div>
+</main>
+
+<script>
+'use strict';
+/* 全程零 innerHTML：只用 createElement / textContent / replaceChildren。
+   （README §7.1：innerHTML 在强制 Trusted Types 的页面上是 sink） */
+const $ = (id) => document.getElementById(id);
+
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined && text !== null) n.textContent = String(text);
+  return n;
+}
+function clear(node) { node.replaceChildren(); }
+
+function setNav() {
+  const cur = '{{nav}}';
+  const a = $('nav-' + cur);
+  if (a) a.className = 'on';
+}
+
+function showMsg(node, text, isErr) {
+  clear(node);
+  node.appendChild(el('div', 'msg' + (isErr ? ' err' : ''), text));
+}
+
+function renderSenses(container, senses) {
+  clear(container);
+  if (!senses || !senses.length) { showMsg(container, '没有义项'); return; }
+  for (const s of senses) {
+    const box = el('div', 'sense');
+    const head = el('div', 'row');
+    const fields = s.fields && s.fields.length ? s.fields : ['(未标注)'];
+    for (const f of fields) head.appendChild(el('span', 'tag f', f));
+    head.appendChild(el('span', 'zh', s.zh || ''));
+    if (s.src === 'api') head.appendChild(el('span', 'tag api', '未复核'));
+    box.appendChild(head);
+    if (s.note) box.appendChild(el('div', 'note', s.note));
+    container.appendChild(box);
+  }
+}
+
+async function doLookup(term) {
+  const card = $('out-card'), body = $('out-body'), extra = $('out-extra');
+  card.style.display = '';
+  $('out-term').textContent = term;
+  clear($('out-tag'));
+  showMsg(body, '查询中…');
+  extra.textContent = '';
+  try {
+    const r = await fetch('/api/lookup?term=' + encodeURIComponent(term));
+    const data = await r.json();
+    if (!r.ok) {
+      clear($('out-tag'));
+      $('out-tag').appendChild(el('span', 'tag err', '出错 ' + r.status));
+      showMsg(body, data.detail ? JSON.stringify(data.detail) : ('HTTP ' + r.status), true);
+      return;
+    }
+    $('out-term').textContent = data.term;
+    clear($('out-tag'));
+    if (data.source === 'glossary') {
+      $('out-tag').appendChild(el('span', 'tag local', '本地词库'));
+    } else {
+      $('out-tag').appendChild(el('span', 'tag api', 'API · 已入库'));
+    }
+    renderSenses(body, data.senses);
+    const bits = [];
+    if (data.matched_key) bits.push('命中 key: ' + data.matched_key);
+    bits.push('来源: ' + data.source);
+    if (data.stats) {
+      bits.push('新增 ' + data.stats.added + ' / 跳过 ' + data.stats.skipped +
+                ' / 共 ' + data.stats.total + ' 条（curated 保留 ' +
+                data.stats.curated_preserved + '）');
+    }
+    extra.textContent = bits.join('　·　');
+  } catch (err) {
+    clear($('out-tag'));
+    showMsg(body, '请求失败：' + (err && err.message ? err.message : err), true);
+  }
+}
+
+$('f').addEventListener('submit', (ev) => {
+  ev.preventDefault();
+  const t = $('q').value.trim();
+  if (t) doLookup(t);
+});
+
+setNav();
+const preset = new URLSearchParams(location.search).get('term');
+if (preset) { $('q').value = preset; doLookup(preset); }
+</script>
+</body>
+</html>

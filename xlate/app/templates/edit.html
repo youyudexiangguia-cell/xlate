@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script'">
+<title>{{title}}</title>
+<style>
+  :root { --bd:#d1d5db; --mut:#6b7280; --blue:#1d4ed8; --bg:#f9fafb; --err:#b91c1c; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+         font-size:14px; color:#111827; background:var(--bg); }
+  header { background:#fff; border-bottom:1px solid var(--bd); padding:10px 18px;
+           display:flex; align-items:center; gap:18px; position:sticky; top:0; z-index:5; }
+  header .brand { font-weight:700; font-size:15px; }
+  header nav a { color:var(--mut); text-decoration:none; margin-right:14px; }
+  main { max-width:900px; margin:22px auto; padding:0 18px; }
+  .card { background:#fff; border:1px solid var(--bd); border-radius:8px; padding:16px;
+          margin-bottom:16px; }
+  h1 { font-size:19px; margin:0 0 4px; }
+  h2 { font-size:14px; margin:0 0 10px; color:#374151; }
+  label { display:block; font-size:12px; color:var(--mut); margin-bottom:3px; }
+  input[type=text], textarea, select {
+    width:100%; padding:7px 9px; border:1px solid var(--bd); border-radius:6px;
+    font-size:13.5px; font-family:inherit; }
+  textarea { resize:vertical; min-height:52px; }
+  button { padding:7px 13px; border:1px solid var(--bd); border-radius:6px;
+           background:#fff; cursor:pointer; font-size:13.5px; }
+  button:hover { background:#f3f4f6; }
+  button.primary { background:var(--blue); color:#fff; border-color:var(--blue); }
+  button.primary:hover { background:#1e40af; }
+  button.danger { color:var(--err); border-color:#fecaca; }
+  button.danger:hover { background:#fef2f2; }
+  button:disabled { opacity:.45; cursor:not-allowed; }
+  .row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .mut { color:var(--mut); font-size:12px; }
+  .sense-card { border:1px solid var(--bd); border-radius:7px; padding:12px;
+                margin-bottom:12px; background:#fcfcfd; }
+  .sense-hd { display:flex; justify-content:space-between; align-items:center;
+              margin-bottom:9px; }
+  .sense-hd .n { font-size:12px; color:var(--mut); font-weight:600; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .grid3 { display:grid; grid-template-columns:2fr 1fr 1fr; gap:10px; }
+  .msg { padding:10px 12px; border-radius:6px; margin-bottom:12px; white-space:pre-wrap;
+         line-height:1.55; }
+  .msg.ok  { background:#f0fdf4; border:1px solid #bbf7d0; color:#166534; }
+  .msg.err { background:#fef2f2; border:1px solid #fecaca; color:var(--err); }
+  .msg.warn{ background:#fffbeb; border:1px solid #fde68a; color:#92400e; }
+  .tag { display:inline-block; font-size:11px; padding:1px 7px; border-radius:10px; }
+  .tag.cur { background:#dcfce7; color:#166534; }
+  .tag.api { background:#fef3c7; color:#92400e; }
+  code { background:#f3f4f6; padding:1px 5px; border-radius:4px; font-size:12.5px; }
+  .hint { font-size:11.5px; color:var(--mut); margin-top:3px; line-height:1.45; }
+  .sticky-bar { position:sticky; bottom:0; background:#fff; border-top:1px solid var(--bd);
+                padding:12px 16px; margin:0 -16px -16px; border-radius:0 0 8px 8px;
+                display:flex; gap:10px; align-items:center; }
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">xlate</span>
+  <nav>
+    <a href="/" id="nav-lookup">查词</a>
+    <a href="/glossary" id="nav-glossary">词库</a>
+    <a href="/stats" id="nav-stats">统计</a>
+    <a href="/docs" target="_blank" rel="noopener">API</a>
+  </nav>
+</header>
+<main>
+  <div id="banner"></div>
+
+  <div class="card">
+    <h1 id="page-title">编辑词条</h1>
+    <div class="mut" id="page-sub"></div>
+
+    <div style="margin-top:14px">
+      <label for="key">key（规范化形式）</label>
+      <input type="text" id="key" spellcheck="false" autocomplete="off">
+      <div class="hint" id="key-hint"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between;margin-bottom:12px">
+      <h2 style="margin:0">义项</h2>
+      <div class="row">
+        <span class="mut" id="sense-count"></span>
+        <button id="add-sense">＋ 加一条义项</button>
+      </div>
+    </div>
+    <div id="senses"></div>
+  </div>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <div class="row">
+        <button class="primary" id="save">保存</button>
+        <button id="reload">放弃改动并重载</button>
+      </div>
+      <button class="danger" id="delete" style="display:none">删除整个词条</button>
+    </div>
+    <div class="hint" style="margin-top:10px">
+      保存走 <code>POST /api/glossary/{key}/replace</code>：**以当前表单为准整体替换**这个词条的义项。
+      服务端用同一套不变量校验，不过则返回 422 且**词库完全不变**。
+      <br>⚠️ 删掉一条义项卡片并保存，那条义项就会从词库移除（页面上方会提示）。
+    </div>
+  </div>
+</main>
+
+<script>
+'use strict';
+/* 零 innerHTML（README §7.1 / TT 纪律）：只用 createElement / textContent / replaceChildren */
+const $ = (id) => document.getElementById(id);
+const MODE = '{{mode}}';                 // 'edit' | 'new'
+const CANON = {{canonical_fields}};      // 规范领域表
+let ORIGINAL = null;                     // 载入时的原始数据，用于「放弃改动」
+
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined && text !== null) n.textContent = String(text);
+  return n;
+}
+function clear(node) { if (node) node.replaceChildren(); }
+
+function banner(kind, text) {
+  const box = $('banner');
+  clear(box);
+  const d = el('div', 'msg ' + kind, text);
+  box.appendChild(d);
+  if (kind !== 'err') setTimeout(() => { if (box.firstChild === d) clear(box); }, 6000);
+}
+
+/* ---------- 归一化（与后端 core.norm_term 一致，用于即时提示）---------- */
+function normTerm(s) {
+  return String(s == null ? '' : s)
+    .trim().toLowerCase()
+    .replace(/^[\s"'`(\[]+/, '')
+    .replace(/[\s"'`)\].,;:!?]+$/, '')
+    .replace(/[\s_\-]+/g, ' ')
+    .trim();
+}
+
+/* ---------- 义项卡片 ---------- */
+let senseSeq = 0;
+
+function makeSenseCard(sense) {
+  const s = sense || { fields: [], aspect: '', zh: '', note: '', src: 'curated' };
+  const card = el('div', 'sense-card');
+  card.dataset.seq = String(++senseSeq);
+
+  const hd = el('div', 'sense-hd');
+  hd.appendChild(el('span', 'n', '义项 #' + card.dataset.seq));
+  const del = el('button', 'danger', '删除此义项');
+  del.type = 'button';
+  del.addEventListener('click', () => { card.remove(); refreshCount(); });
+  hd.appendChild(del);
+  card.appendChild(hd);
+
+  // 领域 + aspect
+  const g3 = el('div', 'grid3');
+
+  const fWrap = el('div');
+  fWrap.appendChild(el('label', null, '领域（可多选，Ctrl/Cmd 点选）'));
+  const fSel = document.createElement('select');
+  fSel.multiple = true;
+  fSel.size = 4;
+  fSel.className = 'fields-select';
+  const current = new Set(sense && sense.fields ? sense.fields : []);
+  const options = CANON.slice();
+  // 若这条义项带着规范表外的领域，也补进选项，避免编辑时丢数据
+  for (const f of current) if (!options.includes(f)) options.push(f);
+  for (const f of options) {
+    const o = document.createElement('option');
+    o.value = f;
+    o.textContent = f;
+    if (current.has(f)) o.selected = true;
+    fSel.appendChild(o);
+  }
+  fWrap.appendChild(fSel);
+  g3.appendChild(fWrap);
+
+  const aWrap = el('div');
+  aWrap.appendChild(el('label', null, 'aspect（细分标签，可空）'));
+  const aIn = el('input');
+  aIn.type = 'text';
+  aIn.value = s.aspect || '';
+  aIn.placeholder = '如 事件 / 容器 / 配置';
+  aIn.className = 'aspect-input';
+  aWrap.appendChild(aIn);
+  aWrap.appendChild(el('div', 'hint', '领域归并后用来保住区分，例如「前端/JS」vs「前端/事件」'));
+  g3.appendChild(aWrap);
+
+  const srcWrap = el('div');
+  srcWrap.appendChild(el('label', null, '来源'));
+  const srcSel = document.createElement('select');
+  srcSel.className = 'src-select';
+  for (const [v, t] of [['curated', 'curated · 人工确认'], ['api', 'api · 模型生成']]) {
+    const o = document.createElement('option');
+    o.value = v;
+    o.textContent = t;
+    if ((s.src || 'curated') === v) o.selected = true;
+    srcSel.appendChild(o);
+  }
+  srcWrap.appendChild(srcSel);
+  srcWrap.appendChild(el('div', 'hint', 'curated 受保护：模型不会覆盖它'));
+  g3.appendChild(srcWrap);
+
+  card.appendChild(g3);
+
+  // zh + note
+  const g2 = el('div', 'grid2');
+  g2.style.marginTop = '10px';
+
+  const zWrap = el('div');
+  zWrap.appendChild(el('label', null, '译法 zh（必填，要短）'));
+  const zIn = el('input');
+  zIn.type = 'text';
+  zIn.value = s.zh || '';
+  zIn.placeholder = '如 背压';
+  zIn.className = 'zh-input';
+  zWrap.appendChild(zIn);
+  g2.appendChild(zWrap);
+
+  const nWrap = el('div');
+  nWrap.appendChild(el('label', null, '说明 note（什么时候用哪个）'));
+  const nIn = el('input');
+  nIn.type = 'text';
+  nIn.value = s.note || '';
+  nIn.placeholder = '如 下游处理不过来时向上游施加的压力';
+  nIn.className = 'note-input';
+  nWrap.appendChild(nIn);
+  g2.appendChild(nWrap);
+
+  card.appendChild(g2);
+  return card;
+}
+
+function refreshCount() {
+  const n = $('senses').querySelectorAll('.sense-card').length;
+  $('sense-count').textContent = n + ' 条义项';
+}
+
+function addSense(sense) {
+  $('senses').appendChild(makeSenseCard(sense));
+  refreshCount();
+}
+
+/* ---------- 收集表单 ---------- */
+function collect() {
+  const key = $('key').value.trim();
+  const senses = [];
+  const problems = [];
+  for (const card of $('senses').querySelectorAll('.sense-card')) {
+    const fields = [...card.querySelector('.fields-select').selectedOptions].map((o) => o.value);
+    const aspect = card.querySelector('.aspect-input').value.trim();
+    const zh = card.querySelector('.zh-input').value.trim();
+    const note = card.querySelector('.note-input').value.trim();
+    const src = card.querySelector('.src-select').value;
+    if (!zh) { problems.push('义项 #' + card.dataset.seq + ' 缺 zh（译法）'); continue; }
+    if (!fields.length && !aspect) {
+      problems.push('义项 #' + card.dataset.seq + ' 至少要选一个领域或填 aspect');
+      continue;
+    }
+    const payload = { zh, note, src, aspect };
+    if (fields.length) payload.fields = fields;
+    senses.push(payload);
+  }
+  if (!key) problems.push('key 不能为空');
+  if (!senses.length) problems.push('至少要有一条有效义项');
+  return { key, senses, problems };
+}
+
+/* ---------- 载入 ---------- */
+async function load() {
+  if (MODE === 'new') {
+    $('page-title').textContent = '新建词条';
+    $('page-sub').textContent = '填 key 和义项，保存后即进入词库。';
+    $('delete').style.display = 'none';
+    addSense({ fields: ['通用'], aspect: '', zh: '', note: '', src: 'curated' });
+    updateKeyHint();
+    return;
+  }
+
+  const key = decodeURIComponent(location.pathname.split('/').pop());
+  $('page-title').textContent = '编辑词条';
+  try {
+    const r = await fetch('/api/glossary/' + encodeURIComponent(key));
+    if (!r.ok) {
+      banner('err', '载入失败：HTTP ' + r.status + '\n' + (await r.text()).slice(0, 300));
+      return;
+    }
+    const senses = await r.json();
+    ORIGINAL = { key, senses };
+    $('key').value = key;
+    $('page-sub').textContent = '共 ' + senses.length + ' 条义项';
+    $('delete').style.display = '';
+    clear($('senses'));
+    for (const s of senses) addSense(s);
+    updateKeyHint();
+  } catch (e) {
+    banner('err', '载入异常：' + (e && e.message ? e.message : e));
+  }
+}
+
+function updateKeyHint() {
+  const raw = $('key').value;
+  const n = normTerm(raw);
+  const hint = $('key-hint');
+  clear(hint);
+  if (!raw) return;
+  if (raw === n) {
+    hint.appendChild(el('span', null, '✅ 已是规范形'));
+  } else {
+    hint.appendChild(el('span', null, '⚠️ 保存时会规范化为 '));
+    hint.appendChild(el('code', null, n));
+    hint.appendChild(el('span', null,
+      '　（大写→小写，下划线/连字符→空格，首尾标点会剥掉）'));
+  }
+  const dup = (ORIGINAL && ORIGINAL.key !== n) ? '　改 key 相当于新建一个词条，原词条仍在。' : '';
+  if (dup) hint.appendChild(el('span', null, dup));
+}
+
+/* ---------- 命令的轻量 no-op，仅用于生成不同按钮的默认类型 ---------- */
+/* ---------- 事件 ---------- */
+$('key').addEventListener('input', updateKeyHint);
+$('add-sense').addEventListener('click', () => {
+  addSense({ fields: [], aspect: '', zh: '', note: '', src: 'curated' });
+});
+$('reload').addEventListener('click', () => {
+  if (MODE === 'new') { location.href = '/glossary'; return; }
+  clear($('banner'));
+  clear($('senses'));
+  load();
+});
+
+$('save').addEventListener('click', async () => {
+  const { key, senses, problems } = collect();
+  if (problems.length) { banner('err', '请先修正：\n· ' + problems.join('\n· ')); return; }
+
+  const btn = $('save');
+  btn.disabled = true;
+  btn.textContent = '保存中…';
+  try {
+    // 用 replace 语义：以表单为准整体替换。
+    // 用合并（POST /api/glossary）的话，改 zh/aspect 会变成"追加新义项"而不是"更新"。
+    const r = await fetch('/api/glossary/' + encodeURIComponent(key) + '/replace', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key, senses }),
+    });
+    const text = await r.text();
+    let data = null;
+    try { data = JSON.parse(text); } catch (e) { data = null; }
+
+    if (!r.ok) {
+      const detail = data && data.detail
+        ? (typeof data.detail === 'string' ? data.detail : JSON.stringify(data.detail))
+        : text.slice(0, 400);
+      banner('err', '保存失败（HTTP ' + r.status + '）：\n' + detail +
+        '\n\n（词库未被修改）');
+      return;
+    }
+    const st = data.stats || {};
+    const lines = ['已保存。key: ' + data.key,
+                   '义项共 ' + (st.total || senses.length) + ' 条' +
+                   '（保留 ' + (st.kept || 0) + ' / 新增 ' + (st.added || 0) +
+                   ' / 删除 ' + (st.removed || 0) + '）'];
+    if (st.removed_zh && st.removed_zh.length) {
+      lines.push('被删除的义项：' + st.removed_zh.join('、'));
+    }
+    if (st.created) lines.push('（这是新建的词条）');
+    banner(st.removed ? 'warn' : 'ok', lines.join('\n'));
+    if (MODE === 'new') {
+      setTimeout(() => { location.href = '/edit/' + encodeURIComponent(data.key); }, 900);
+    } else {
+      ORIGINAL = null;
+      clear($('senses'));
+      await load();
+    }
+  } catch (e) {
+    banner('err', '保存异常：' + (e && e.message ? e.message : e));
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '保存';
+  }
+});
+
+$('delete').addEventListener('click', async () => {
+  const key = $('key').value.trim();
+  if (!key) return;
+  if (!window.confirm('确定删除整个词条「' + key + '」？\n\n此操作不可撤销。')) return;
+  try {
+    const r = await fetch('/api/glossary/' + encodeURIComponent(key), { method: 'DELETE' });
+    const text = await r.text();
+    if (!r.ok) {
+      let d = text.slice(0, 300);
+      try { const j = JSON.parse(text); if (j.detail) d = j.detail; } catch (e) {}
+      banner('err', '删除失败（HTTP ' + r.status + '）：' + d);
+      return;
+    }
+    banner('ok', '已删除「' + key + '」，正在返回词库…');
+    setTimeout(() => { location.href = '/glossary'; }, 800);
+  } catch (e) {
+    banner('err', '删除异常：' + (e && e.message ? e.message : e));
+  }
+});
+
+/* 键盘：Ctrl/Cmd+S 保存 */
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+    e.preventDefault();
+    $('save').click();
+  }
+});
+
+load();
+</script>
+</body>
+</html>
